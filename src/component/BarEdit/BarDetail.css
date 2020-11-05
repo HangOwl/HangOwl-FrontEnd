@@ -1,0 +1,131 @@
+.Customer-view {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    margin: 50%;
+    overflow: hidden;
+}
+
+.box-position {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    width: 300px;
+    height: 300px;
+    margin: 90px auto;
+    border-radius: 0px;
+    background-color: #ffffff;
+}
+
+.nametext{
+    font-family: Impact; 
+    font-size: 30px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.Button1 {
+    position: absolute;
+    left: 75.97%;
+    right: 7.04%;
+    bottom: 93.56%;
+    height: 68px;
+    width: 100px;
+    border-radius: 0px;
+    align-items: flex-end;
+    background-color: #E11584;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Impact;
+}
+
+.Button2 {
+    position: absolute;
+    left: 75.97%;
+    right: 7.04%;
+    bottom: 9.56%;
+    height: 68px;
+    width: 100px;
+    border-radius: 0px;
+    align-items: flex-end;
+    background-color: #ff33cc;
+    color: #ffffff;
+    font-size: 22px;
+    font-family: Impact;
+}
+
+.Button3 {
+    position: absolute;
+    left: 60%;
+    right: 7.04%;
+    /* bottom: 93.56%; */
+    height: 50px;
+    width: 70px;
+    border-radius: 0px;
+    align-items: flex-end;
+    background-color: #E11584;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Impact;
+}
+
+.Button4 {
+    position: absolute;
+    left: 50%;
+    bottom: 93.56%;
+    Width: 220px;
+    height: 63px;
+    border-radius: 0px;
+    align-items: flex-end;
+    background-color: #E11584;
+    color: #ffffff;
+    font-size: 28px;
+    font-family: Impact;
+}
+
+.box-position {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    display: flex;
+    margin: 20px auto;
+    border-radius: 0px;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.boxtext{
+    position: absolute;
+    font-family: Impact;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+
+.Customer-positon {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImgBar-position {
+    display: flex;
+    position:absolute;
+    align-items: center;
+    display: flex;
+    margin: 20% auto;
+    padding: 70px;
+    float: left;
+    left: 15%;
+}
+
+
+
+
+
