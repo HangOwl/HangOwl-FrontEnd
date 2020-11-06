@@ -5,6 +5,8 @@ import FetchReserved from './FetchReserved';
 import BarDetail from './component/BarEdit/BarDetail';
 import SimpleModal from './component/BarEdit/Modal';
 import Pro from './component/BarEdit/sentt';
+import UploadButtons from './component/BarEdit/testUpload';
+
 
 //import PersonList from './component/PersonList';
 
@@ -18,7 +20,7 @@ function App() {
       <div className="App">
          <p></p>
          {/* <FetchReserved />  */}
-         <BarDetail /> 
+         <BarDetail />
          {/* <Login /> */}
          {/* <EditContent /> */}
          {/* <Pro /> */}

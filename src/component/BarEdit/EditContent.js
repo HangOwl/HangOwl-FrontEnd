@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 import './BarDetail.css'
-import BarBG from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/BarBG(4K).jpg'
+// import BarBG from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/BarBG(4K).jpg'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
     console.log(params);
        
-      const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id , {
+      const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id,{
         method: 'PATCH',
         headers: config,
         body: params,

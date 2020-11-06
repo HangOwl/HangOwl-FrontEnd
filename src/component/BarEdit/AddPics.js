@@ -6,7 +6,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 
 
-import pic from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/BarBG(4K).jpg'
+//import pic from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/BarBG(4K).jpg'
 
 const useStyles = makeStyles((theme) => ({
     root: {

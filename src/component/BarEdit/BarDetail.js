@@ -5,7 +5,7 @@ import AddPics from './AddPics'
 import CheckBoxes from './CheckBoxes'
 import EditContent from './EditContent'
 
-import barpic from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/bar1.jpg'
+//import barpic from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/bar1.jpg'
 
 export default function BarDetail() {
 
@@ -50,13 +50,13 @@ export default function BarDetail() {
         <img width="300px" src={'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath} />
         <p className="nametext">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="Button2" style= {{top: "20%"}}>Upload picture</button>
+          <button className="Button2" style= {{top: "20%"}}>Change Bar Picture</button>
         </p>
       </header>
 
       <header> 
         <AddPics addpics={picList} />
-        <button className="Button2" style= {{top: "50%"}}>Upload picture</button>
+        <button className="Button2" style= {{top: "50%"}}>Add Picture</button>
       </header>
 
       <header className="Customer-views">
@@ -85,7 +85,7 @@ export default function BarDetail() {
       </header>
 
       <header className="Customer-views">
-        <p className="nametext">CLOSE ON : {data.LineID}
+        <p className="nametext">CLOSE ON :
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <CheckBoxes closeOn={closeDay}/>
         </p>
