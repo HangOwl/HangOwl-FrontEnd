@@ -18,32 +18,37 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3),
     alignItems: 'center',
     margin: '0px auto',
+    color: 'white',
   },
 
 }));
 
-export default function Checkboxes({closeOn}) {
+export default function Checkboxes({closeOn,closeOn1,setCloseOn1}) {
   const classes = useStyles();
 
   const [value, setValue] = useState({
-    Sunday: false,
-    Monday: false,
-    Tuesday: false,
-    Wednesday: false,
-    Thursday: false,
-    Friday: false,
-    Saturday: false
+    Sunday: closeOn[0],
+    Monday: closeOn[1],
+    Tuesday: closeOn[2],
+    Wednesday: closeOn[3],
+    Thursday: closeOn[4],
+    Friday: closeOn[5],
+    Saturday: closeOn[6]
   });
 
   const handleChange = (event) => {
     setValue({ ...value, [event.target.name]: event.target.checked });
+    setCloseOn1({...closeOn1,[event.target.name]: event.target.checked })
   };
 
-  const { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday } = value;
+  const { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday } = closeOn1;
+  useEffect(() => {
+    console.log(value)
+  },[value])
 
   return (
     <div className={classes.root}>
-      <FormControl component="fieldset" className={classes.formControl}>
+      <FormControl component="fieldset" className={classes.formControl} style={{}} disabled>
         <FormGroup>
           <FormControlLabel 
             control={<Checkbox checked={Sunday} onChange={handleChange} name="Sunday" />}

@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import './App.css';
 
-import FetchReserved from './FetchReserved';
 import BarDetail from './component/BarEdit/BarDetail';
-import SimpleModal from './component/BarEdit/Modal';
-import Pro from './component/BarEdit/sentt';
-import UploadButtons from './component/BarEdit/testUpload';
-
-
-//import PersonList from './component/PersonList';
-
-// import GetRequestHooks from 'GetRequestHooks';
-//import axios from 'axios';
+import UploadButtons from './component/BarEdit/UploadButtons';
+import RealBarDetail from './component/BarEdit/RealBarDetail';
+import Navbar from './component/Nav/Navbar';
+import EditCheckBox from './component/BarEdit/EditCheckBox';
 
 
 function App() {
 
    return (
       <div className="App">
-         <p></p>
-         {/* <FetchReserved />  */}
-         <BarDetail />
+         
+         {/* <RealBarDetail />
+         <UploadButtons /> */}
+
          {/* <Login /> */}
          {/* <EditContent /> */}
-         {/* <Pro /> */}
+         <EditCheckBox />
+
+         {/* <Navbar />
+         <Route exact path="/">
+            <Home />
+         </Route> */}
       </div>
    );
 }

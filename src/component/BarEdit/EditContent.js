@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
       left: '25%',
     },
     Submit: {
+      fontFamily: 'Impact',
       height: '44px',
       width: '77px',
       position: 'absolute',
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
       color: '#fff',
     },
     Cancel: {
+      fontFamily: 'Impact',
       height: '44px',
       width: '77px',
       position: 'absolute',
@@ -58,8 +60,8 @@ const useStyles = makeStyles((theme) => ({
 
   async function PatchData(contentKey, contentValue) {
     const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0MjgyNjQyLCJleHAiOjE2MDQ0NTU0NDJ9.FV1wL8M5AT-Q22HBwwsHyyKW_CfJrQyxMNRafoHqISs",
-      "id": "5f9e6fc429e35311c62d70ac",
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjlmYjY2ZWU1MjQ5YjE0Y2UxYTIwOGYiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0NzU4MTY2LCJleHAiOjE2MDQ5MzA5NjZ9.4-dmdVxy-hPH9Hvzm3TWNJ91-aYIOzSyMP2jqULriJA",
+      "id": "5f9fb66ee5249b14ce1a208f",
       "Role": 1
     }
 
@@ -93,6 +95,7 @@ function EditContent(props) {
     const [open, setOpen] = useState(false)
     const [contentKey, setcontentKey] = useState(props.contentKey);
     const [contentValue, setcontentValue] = useState('');
+    const Getdata = props.GetData;
 
     const handleOpen = () => { setOpen(true) };
  
@@ -123,7 +126,8 @@ function EditContent(props) {
                     className={classes.Submit} 
                     onClick={() => { 
                       PatchData(contentKey, contentValue);
-                      handleClose();}}>Submit
+                      handleClose();
+                      Getdata();}}>Submit
                   </button>
                   <button className={classes.Cancel} onClick={handleClose}>Cancel</button>
             </div>

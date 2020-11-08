@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -36,12 +36,13 @@ function AddPics(props) {
     const classes = useStyles();
     const pics_path = props.addpics
 
+
     return (
       <div className={classes.root} >
       <GridList className={classes.gridList} cols={1.5}>
         {pics_path.map((path, index) => (
-          <GridListTile keys={path}>
-            <img src={"http://35.240.130.253:3001/pictures/"+path} style={{height: "100%"}} />
+          <GridListTile key={index} keys={path}>
+            <img  src={"http://35.240.130.253:3001/pictures/"+path} style={{height: "100%"}} /> 
           </GridListTile>
         ))}
       </GridList> 

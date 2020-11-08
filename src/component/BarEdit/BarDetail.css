@@ -27,14 +27,8 @@
 }
 
 .Button1 {
-    position: absolute;
-    left: 75.97%;
-    right: 7.04%;
-    bottom: 93.56%;
-    height: 68px;
-    width: 100px;
-    border-radius: 0px;
-    align-items: flex-end;
+    height: 48px;
+    width: 200px;
     background-color: #E11584;
     color: #ffffff;
     font-size: 20px;
@@ -42,14 +36,8 @@
 }
 
 .Button2 {
-    position: absolute;
-    left: 75.97%;
-    right: 7.04%;
-    bottom: 9.56%;
     height: 68px;
-    width: 100px;
-    border-radius: 0px;
-    align-items: flex-end;
+    width: 200px;
     background-color: #ff33cc;
     color: #ffffff;
     font-size: 22px;
@@ -57,18 +45,14 @@
 }
 
 .Button3 {
-    position: absolute;
-    left: 60%;
-    right: 7.04%;
-    /* bottom: 93.56%; */
     height: 50px;
     width: 70px;
     border-radius: 0px;
-    align-items: flex-end;
     background-color: #E11584;
     color: #ffffff;
     font-size: 20px;
     font-family: Impact;
+    display: inline-block;
 }
 
 .Button4 {
@@ -114,18 +98,24 @@
     align-items: center;
 }
 
-.ImgBar-position {
-    display: flex;
-    position:absolute;
-    align-items: center;
-    display: flex;
-    margin: 20% auto;
-    padding: 70px;
-    float: left;
-    left: 15%;
+.centext {
+    text-align: center;
 }
 
+.edittext {
+    font-family: Impact;
+    font-size: 22px;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+}
 
+.editpic {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    display: inline-block;
+}
 
 
 
