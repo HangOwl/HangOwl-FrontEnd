@@ -51,7 +51,7 @@ export default function List(props) {
     fetch('http://35.240.130.253:3001/reservations/' + id + '/' + stat, {
     method: 'PATCH', // or 'PUT'
     headers:  {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0NTYyOTU3LCJleHAiOjE2MDQ3MzU3NTd9.fLK0FIVuzxhXRxw8AdIv9iGc8tfUgYBFASzM65P9_ME",
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODcwNzIxLCJleHAiOjE2MDYwNDM1MjF9.04hHLwo6FLPgQOEmqpPQL5LFF3Msj-Q2dHa7VJ_Y3ZY",
       "id": "5f9e6fc429e35311c62d70ac",
       "Role": 1
     },

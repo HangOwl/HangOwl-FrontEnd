@@ -3,7 +3,7 @@ import './App.css';
 //import Navbar from './components/Navbar';
 
 // import Bars from './contents/bars'
-import FullWidthTabs from './reservationLists';
+import ResList from './reservationLists';
 import BarHomepage from './barHomepage';
 function App() {
   
@@ -21,7 +21,7 @@ function App() {
 
     
     <div>
-      <FullWidthTabs />
+      <ResList />
       {/* <BarHomepage />  */}
     </div>
     
