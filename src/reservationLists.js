@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import ControlledAccordions from './accordion_test';
+import List from './ResListField';
 import './App.css';
 import EmergencyButton from './emerBut';
 import FormControl from '@material-ui/core/FormControl';
@@ -227,7 +227,7 @@ export default function FullWidthTabs() {
         <p className = {classes.heading}>All Reservation : {allReserve}</p>
         <br></br>
         <div className={classes.reserveList}>
-          <ControlledAccordions getData={fetchData} data={data}/>
+          <List getData={fetchData} data={data}/>
         </div>
         </TabPanel>
     </div>

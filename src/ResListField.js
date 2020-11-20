@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function ControlledAccordions(props) {
+export default function List(props) {
   const {getData,data} = props;
   const classes = useStyles();
   const statMap = ["Pending", "Accepted", "Rejected"]
