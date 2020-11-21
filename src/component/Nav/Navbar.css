@@ -154,9 +154,3 @@ span {
   margin-left: 13px;
   margin-top: 9px;
 }
-
-.search_bar{
-  /* position: relative; */
-  display: flex;
-  margin-left: 1100px !important;
-}

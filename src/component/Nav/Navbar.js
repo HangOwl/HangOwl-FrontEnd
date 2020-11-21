@@ -27,7 +27,6 @@ function Navbar() {
   };
 
   const handleChange2 = () => {
-    //onsole.log('naboon');
     setSidestate(false);
   }
 
@@ -69,7 +68,7 @@ function Navbar() {
                 <div onClick={() => handleChange(item.path)} >
                 <li key={index} className={item.cName}>
                       <Link to={item.path}>
-                          {item.icon}
+                          {item.icon}&nbsp;&nbsp;
                           {item.title}
                       </Link> 
                 </li>

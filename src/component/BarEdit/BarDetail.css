@@ -29,8 +29,9 @@
 .Button1 {
     height: 48px;
     width: 200px;
-    background-color: #E11584;
     color: #ffffff;
+    background-image: url("/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/Button1.png");
+    background-position: center;
     font-size: 20px;
     font-family: Impact;
 }
@@ -38,7 +39,8 @@
 .Button2 {
     height: 68px;
     width: 200px;
-    background-color: #ff33cc;
+    background-image: url("/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/Button2.png");
+    background-position: center;
     color: #ffffff;
     font-size: 22px;
     font-family: Impact;
@@ -48,11 +50,13 @@
     height: 50px;
     width: 70px;
     border-radius: 0px;
-    background-color: #E11584;
+    background-image: url("/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/Button1.png");
+    background-position: center;
     color: #ffffff;
     font-size: 20px;
     font-family: Impact;
     display: inline-block;
+
 }
 
 .Button4 {
@@ -63,7 +67,8 @@
     height: 63px;
     border-radius: 0px;
     align-items: flex-end;
-    background-color: #E11584;
+    background-image: url("/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/Button3.png");
+    background-position: center;
     color: #ffffff;
     font-size: 28px;
     font-family: Impact;

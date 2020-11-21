@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom' 
 
 import Navbar from './Nav/Navbar'
+import './BarHomepage.css'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,6 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+
+import welcome from '/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/Welcome_To_HangOwl.png'
 
 const useStyles = makeStyles({
     table: {
@@ -26,13 +29,18 @@ const useStyles = makeStyles({
       margin : "auto",
       allignItem : "center",
     },
+    Button1: {
+      width: "50px",
+      height: "50px",
+      backgroundColor: "#E11584"
+    }
   });
 
   export default function BarHomepage() {
     const classes = useStyles();
     const [ info, setInfo ] = useState([]);
-    const [bar,setName] =  useState("");
-    const [ errors, setErroes] = useState(false)
+    const [ bar, setName ] =  useState("");
+    const [ errors, setErrors ] = useState(false)
     async function fetchData() {
         const headers = {
           "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
@@ -49,7 +57,7 @@ const useStyles = makeStyles({
             return item.Status === 0
           }));
         })
-          .catch(err => setErroes(err));
+          .catch(err => setErrors(err));
         //console.log(data);
         console.log(info)
         console.log(bar)
@@ -62,17 +70,25 @@ const useStyles = makeStyles({
     return (
     <body className = "body">
     <Navbar />
-    <div className={classes.root}>    
-    <center><h1>{bar}<br></br>
+
+    <div>
+      <img src={welcome} className="welcome" alt=""/>
+    </div>
+
+    <div className={classes.root}>  
+
+    <center className="nametext"><h1>{bar}</h1><br/>
+      <span className="nametext">
         Pending Reservations 
-        <Link to ="/reservations">
-          <Button variant="contained" color="secondary">
-            Check Reserved
-          </Button>
-        </Link>
-    </h1></center>
-    <br></br>
-    <br></br>
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <Link to ="/reservations">
+        <Button variant="contained" color="secondary" allignItem="center">
+          Check Reservations
+        </Button>
+      </Link>
+    </center>
+    <br/><br/>
+
     <div className={classes.List}>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">

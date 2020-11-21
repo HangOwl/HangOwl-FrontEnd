@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import './BarDetail.css'
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
@@ -79,16 +80,13 @@ export default function UploadButtons(props) {
         
     })
     .then(Getdata);
-
-    const Upload = await res.json()
-    console.log(Upload);
     }
 
 
   return (
     <div>
         <button className="Button2" onClick={modalOpen}>
-            Change your profile
+            Change your picture
         </button>
         <Modal
           open={open}
