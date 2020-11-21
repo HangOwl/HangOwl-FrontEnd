@@ -1,16 +1,12 @@
 import React, {useEffect, useState } from 'react';
-import { Link } from 'react'
+import { Link } from 'react-router-dom'
 import Navbar from './Nav/Navbar'
 
 import './BarEdit/BarDetail.css'
 import AddPics from './BarEdit/AddPics'
 import CheckBoxes from './BarEdit/CheckBoxes'
-import EditContent from './BarEdit/EditContent'
-import UploadButtons from './BarEdit/UploadButtons';
-import EditCheckBox from './BarEdit/EditCheckBox';
 
-
-export default function RealBarDetail() {
+export default function ShowBarDetail() {
   const [ data, setData ] = useState([]);
   const [ errors, setErrors ] = useState(false)
   const [picList, setPicList] = useState([])
@@ -27,7 +23,7 @@ export default function RealBarDetail() {
 
   async function GetData () { 
     const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODU5MDE5LCJleHAiOjE2MDYwMzE4MTl9.KVisloy5nozDml6ZbUwKRIM9ugO5yyar9rnnAYVEysU",
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
     "id": "5f9e6fc429e35311c62d70ac",
     "Role": 1
     }
@@ -60,15 +56,12 @@ export default function RealBarDetail() {
   }, []);
 
   return (
+    <div>
+    <Navbar />
     <div className="bgg">
-      <Navbar />
       <div className="centext">
-        <p className="edittext">Please type your bar details.</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <button className="Button1">Customer Views</button>
-        </p>
-        <br/><br/>
+        <p className="edittext">{data.BarName}</p>
+        <br/>
       </div>
 
       <div className="centext">
@@ -110,11 +103,14 @@ export default function RealBarDetail() {
 
       <div className="centext">
         <p className="edittext">
-          <button className="Button1">Back to Bar Detail</button>
+          <Link to = "/bardetails">
+            <button className="Button1">Back to Edit Bar Detail</button>
+          </Link>
         </p>
         <br/><br/>
       </div>
 
+    </div>
     </div>
   )
 

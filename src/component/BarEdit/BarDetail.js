@@ -10,7 +10,7 @@ import UploadButtons from './UploadButtons';
 import EditCheckBox from './EditCheckBox';
 
 
-export default function RealBarDetail() {
+export default function BarDetail() {
   const [ data, setData ] = useState([]);
   const [ errors, setErrors ] = useState(false)
   const [picList, setPicList] = useState([])
@@ -27,7 +27,7 @@ export default function RealBarDetail() {
 
   async function GetData () { 
     const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODU5MDE5LCJleHAiOjE2MDYwMzE4MTl9.KVisloy5nozDml6ZbUwKRIM9ugO5yyar9rnnAYVEysU",
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
     "id": "5f9e6fc429e35311c62d70ac",
     "Role": 1
     }
@@ -60,8 +60,9 @@ export default function RealBarDetail() {
   }, []);
 
   return (
+    <div>
+    <Navbar />
     <div className="bgg">
-      <Navbar />
       <div className="centext">
         <p className="edittext">Please type your bar details.</p>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -148,6 +149,16 @@ export default function RealBarDetail() {
         <br/>
       </div>
 
+      <div className="centext">
+        <p className="edittext">
+          <Link to="/">
+            <button className="Button1">Back to Bar Detail</button>
+          </Link>
+        </p>
+        <br/><br/>
+      </div>
+
+    </div>
     </div>
   )
 
