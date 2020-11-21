@@ -78,7 +78,7 @@ export default function ResList() {
   
   // GET Reservation List
   const [ info, setInfo ] = useState([])
-  const [ errors, setErroes] = useState(false)
+  const [ errors, setErrors ] = useState(false)
   const [date,setDate] = React.useState('');
   const [value, setValue] = useState(0);
   const [index, setIndex] = useState(0);
@@ -172,7 +172,7 @@ export default function ResList() {
       })
       .then(console.log(value))
       .then(handleChangeData(state))
-      .catch(err => setErroes(err));
+      .catch(err => setErrors(err));
     //console.log(data);
     console.log(data)
   }

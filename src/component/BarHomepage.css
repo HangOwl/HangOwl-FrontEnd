@@ -1,0 +1,16 @@
+.welcome{
+    display: flex;
+    max-width: 85%;
+    object-fit: cover;
+    overflow: hidden;
+    margin: 0px;
+    border-radius: 0px;
+    padding: 0;
+}
+
+.nametext{
+    font-family: Impact; 
+    font-size: 30px;
+    text-align: center;
+    color: #ffffff;
+}

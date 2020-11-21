@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { CloseOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     margin: '0px auto', 
     color: 'pink',
-    '&$disabled': {
-      color: 'green',
+    '&:disabled': {
+      color: 'pink',
     },
   },
   disabled: {},
@@ -58,14 +56,15 @@ export default function Checkboxes({closeOn,closeOn1,setCloseOn1}) {
           disabled:classes.disabled,
           }}  
         disabled
+        
       >
-        <FormGroup>
+        <FormGroup inverted>
           <FormControlLabel 
-            control={<Checkbox checked={Sunday} onChange={handleChange} name="Sunday" color='pink' />}
-            label="Sunday"
+            control={<Checkbox checked={Sunday} onChange={handleChange} name="Sunday" color="secondary" />}
+            label="Sunday" 
           />
           <FormControlLabel
-            control={<Checkbox checked={Monday} onChange={handleChange} color='pink' name="Monday" />}
+            control={<Checkbox checked={Monday} onChange={handleChange} color="pink" name="Monday" />}
             label="Monday"
           />
           <FormControlLabel

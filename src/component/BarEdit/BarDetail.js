@@ -3,6 +3,7 @@ import Navbar from '../Nav/Navbar'
 import { Link } from 'react-router-dom'
 
 import './BarDetail.css'
+
 import AddPics from './AddPics'
 import CheckBoxes from './CheckBoxes'
 import EditContent from './EditContent'
@@ -68,7 +69,9 @@ export default function BarDetail() {
         &nbsp;&nbsp;&nbsp;&nbsp;
         <p className="edittext">
           <Link to="/customerviews">
-            <button className="Button1">Customer Views</button>
+            <button className="Button1"> 
+                Customer Views
+            </button>
           </Link>
         </p>
         <br/><br/>

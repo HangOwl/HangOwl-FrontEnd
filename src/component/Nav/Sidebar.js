@@ -11,19 +11,19 @@ export const Sidebar_bars = [
   //   cName: 'nav-text'
   // },
   {
-    title: 'Bar Details ',
+    title:' Bar Details ',
     path: '/bardetails',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
   {
-    title: 'Reservations ',
+    title: ' Reservations ',
     path: '/reservations',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {
-    title: 'logout ',
+    title: ' logout ',
     path: '/logout',
     icon: <BiIcons.BiLogOut />,
     cName: 'nav-text'
