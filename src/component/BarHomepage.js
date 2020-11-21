@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom' 
+
+import Navbar from './Nav/Navbar'
+
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,8 +11,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-
-import Navbar from './Nav/Navbar'
 
 const useStyles = makeStyles({
     table: {
@@ -26,14 +28,14 @@ const useStyles = makeStyles({
     },
   });
 
-export default function BarHomepage() {
+  export default function BarHomepage() {
     const classes = useStyles();
     const [ info, setInfo ] = useState([]);
     const [bar,setName] =  useState("");
     const [ errors, setErroes] = useState(false)
     async function fetchData() {
         const headers = {
-          "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODUyODU4LCJleHAiOjE2MDYwMjU2NTh9.HMlCNly6-tTa9PrTjJxmc1vs2RQe9mcSF8RjLovC2NU",
+          "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
           "id": "5f9e6fc429e35311c62d70ac",
           "Role": 1
       }
@@ -58,15 +60,16 @@ export default function BarHomepage() {
       }, []);
   
     return (
-    
     <body className = "body">
     <Navbar />
     <div className={classes.root}>    
     <center><h1>{bar}<br></br>
         Pending Reservations 
-        <Button variant="contained" color="secondary">
-        Check Reserved
-      </Button>
+        <Link to ="/reservations">
+          <Button variant="contained" color="secondary">
+            Check Reserved
+          </Button>
+        </Link>
     </h1></center>
     <br></br>
     <br></br>
@@ -89,9 +92,14 @@ export default function BarHomepage() {
         </Table>
       </TableContainer>
       
-    </div><center><Button variant="contained" color="secondary">
-        Edit Bar's Details
-      </Button></center></div>
+    </div><center>
+      <Link to ="/bardetails">
+        <Button variant="contained" color="secondary">
+          Edit Bar's Details
+        </Button>
+      </Link>
+      </center></div>
+
     </body>
     );
   }

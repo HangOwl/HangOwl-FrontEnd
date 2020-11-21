@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
+import Navbar from '../Nav/Navbar'
+import '../../App.css';
+
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,14 +10,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import List from './ResListField';
-import './App.css';
 import EmergencyButton from './emerBut';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+
+import List from './ResListField';
 
 
 function TabPanel(props) {
@@ -27,6 +29,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
+    
       {value === index && (
         <Box p={3}>
           <Typography>{children}</Typography>
@@ -118,9 +121,9 @@ export default function ResList() {
 
   async function fetchData() {
     const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODcwNzIxLCJleHAiOjE2MDYwNDM1MjF9.04hHLwo6FLPgQOEmqpPQL5LFF3Msj-Q2dHa7VJ_Y3ZY",
-      "id": "5f9e6fc429e35311c62d70ac",
-      "Role": 1
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
+    "id": "5f9e6fc429e35311c62d70ac",
+    "Role": 1
   }
 
     const res = await fetch('http://35.240.130.253:3001/reservations', { headers })
@@ -210,6 +213,7 @@ export default function ResList() {
   const allReserve = info.length;
   return (
     <body className = "body">
+    <Navbar />
     <div className={classes.root}>
       <h1 className="center_txt">List of Reservation </h1>
       <br></br>

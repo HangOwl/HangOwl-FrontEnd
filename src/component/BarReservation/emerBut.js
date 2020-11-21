@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
-import './App.css';
+import '../../App.css';
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
