@@ -42,38 +42,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-async function PatchData(pictures) {
-    const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0MjgyNjQyLCJleHAiOjE2MDQ0NTU0NDJ9.FV1wL8M5AT-Q22HBwwsHyyKW_CfJrQyxMNRafoHqISs",
-      "id": "5f9e6fc429e35311c62d70ac",
-      "Role": 1
-    }
-    const config = {
-      'Authorization' : `${headers.Authorization}`,
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    }
-       
-    const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id+'/pictures?profile='+pictures, {
-        method: 'PATCH',
-        headers: config,
-        body: JSON.stringify(pictures)
-    });
-
-    const EditContent = await res.json()
-    console.log(UploadButtons);
-    }
 
 
-export default function UploadButtons(pictures) {
+export default function UploadButtons(props) {
   const classes = useStyles();
-  const [pic, setPic] = useState(pictures)
+  const [pic, setPic] = useState(null)
   const [open, setOpen] = useState(false)
- 
+  const Getdata = props.GetData;
 
   const modalOpen = () => { setOpen(true) };
  
   const modalClose = () => { setOpen(false) };
+
+  async function PatchData(isProfile, pic) {
+    const headers = {
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODU5MDE5LCJleHAiOjE2MDYwMzE4MTl9.KVisloy5nozDml6ZbUwKRIM9ugO5yyar9rnnAYVEysU",
+    "id": "5f9e6fc429e35311c62d70ac",
+    "Role": 1
+    }
+    const config = {
+      'Authorization' : `${headers.Authorization}`,
+      'Access-Control-Allow-Origin': '*',
+    }
+
+    // const input = document.querySelector('input[type="file"]')
+
+    const data = new FormData();
+    data.append('image', pic);
+
+       
+    const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id+'/pictures?profile='+isProfile, {
+        method: 'PATCH',
+        headers: config,
+        body: data,
+        redirect: 'follow',
+        
+    })
+    .then(Getdata);
+
+    const Upload = await res.json()
+    console.log(Upload);
+    }
+
+
   return (
     <div>
         <button className="Button2" onClick={modalOpen}>
@@ -92,15 +103,15 @@ export default function UploadButtons(pictures) {
                   id="contained-button-file"
                   multiple
                   type="file"
-                  value={pic}
-                  onChange={(event) => setPic(event.target.value)}
+                  onChange={event => setPic(event.target.files[0])}
                 />
               </label>
               <button 
                 className={classes.Submit} 
                 onClick={() => {
-                  PatchData(pic);
+                  PatchData(props.profile, pic);
                   modalClose();
+                  Getdata();
                   }
                 }
               >

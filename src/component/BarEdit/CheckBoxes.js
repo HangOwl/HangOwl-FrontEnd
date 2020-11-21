@@ -17,10 +17,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: theme.spacing(3),
     alignItems: 'center',
-    margin: '0px auto',
-    color: 'white',
+    margin: '0px auto', 
+    color: 'pink',
+    '&$disabled': {
+      color: 'green',
+    },
   },
-
+  disabled: {},
 }));
 
 export default function Checkboxes({closeOn,closeOn1,setCloseOn1}) {
@@ -48,14 +51,21 @@ export default function Checkboxes({closeOn,closeOn1,setCloseOn1}) {
 
   return (
     <div className={classes.root}>
-      <FormControl component="fieldset" className={classes.formControl} style={{}} disabled>
+      <FormControl 
+        component="fieldset" 
+        className= {{
+          formControl: classes.formControl, 
+          disabled:classes.disabled,
+          }}  
+        disabled
+      >
         <FormGroup>
           <FormControlLabel 
-            control={<Checkbox checked={Sunday} onChange={handleChange} name="Sunday" />}
+            control={<Checkbox checked={Sunday} onChange={handleChange} name="Sunday" color='pink' />}
             label="Sunday"
           />
           <FormControlLabel
-            control={<Checkbox checked={Monday} onChange={handleChange} name="Monday" />}
+            control={<Checkbox checked={Monday} onChange={handleChange} color='pink' name="Monday" />}
             label="Monday"
           />
           <FormControlLabel
