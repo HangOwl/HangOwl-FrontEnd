@@ -1,11 +1,13 @@
 import React, {useEffect, useState } from 'react';
+import { Link } from 'react'
+import Navbar from './Nav/Navbar'
 
-import './BarDetail.css'
-import AddPics from './AddPics'
-import CheckBoxes from './CheckBoxes'
-import EditContent from './EditContent'
-import UploadButtons from './UploadButtons';
-import EditCheckBox from './EditCheckBox';
+import './BarEdit/BarDetail.css'
+import AddPics from './BarEdit/AddPics'
+import CheckBoxes from './BarEdit/CheckBoxes'
+import EditContent from './BarEdit/EditContent'
+import UploadButtons from './BarEdit/UploadButtons';
+import EditCheckBox from './BarEdit/EditCheckBox';
 
 
 export default function RealBarDetail() {
@@ -25,9 +27,9 @@ export default function RealBarDetail() {
 
   async function GetData () { 
     const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjlmYjY2ZWU1MjQ5YjE0Y2UxYTIwOGYiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0NzU4MTY2LCJleHAiOjE2MDQ5MzA5NjZ9.4-dmdVxy-hPH9Hvzm3TWNJ91-aYIOzSyMP2jqULriJA",
-      "id": "5f9fb66ee5249b14ce1a208f",
-      "Role": 1
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODU5MDE5LCJleHAiOjE2MDYwMzE4MTl9.KVisloy5nozDml6ZbUwKRIM9ugO5yyar9rnnAYVEysU",
+    "id": "5f9e6fc429e35311c62d70ac",
+    "Role": 1
     }
 
     const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id+`/profile`, { headers });
@@ -59,7 +61,7 @@ export default function RealBarDetail() {
 
   return (
     <div className="bgg">
-
+      <Navbar />
       <div className="centext">
         <p className="edittext">Please type your bar details.</p>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -71,77 +73,46 @@ export default function RealBarDetail() {
 
       <div className="centext">
         <img className="editpic" src={'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath} /> 
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <UploadButtons />
-        </p>
         <br/><br/>
       </div>
 
       <div className="centext">
         <AddPics addpics={picList} />
-        <p className="edittext">
-          <UploadButtons />
-        </p>
       </div>
 
       <div className="centext">
         <p className="edittext">Bar's Name : {data.BarName}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="BarName" GetData = {GetData}/>
-        </p>
         <br/>
 
         <p className="edittext">Open Time : {data.OpenTime}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="OpenTime" GetData = {GetData}/>
-        </p>
         <br/>
 
         <p className="edittext">Close Time : {data.CloseTime}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="CloseTime" GetData = {GetData}/>
-        </p>
         <br/>
 
         <p className="edittext">Line ID : {data.LineID}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="LineID" GetData = {GetData}/>
-        </p>
         <br/>
 
         <p className="edittext">Close ON : 
         <CheckBoxes setCloseDay1={setCloseDay1} closeOn1={closeDay1} closeOn={closeDay}/>
-        <p className="edittext">
-          {/* <EditCheckBox /> */}
-        </p>
         </p>
         <br/>
 
         <p className="edittext">Address : {data.Address}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="Address" GetData = {GetData}/>
-        </p>
         <br/>
 
         <p className="edittext">Description: {data.BarDescription}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="BarDescription" GetData = {GetData}/>
-        </p>
         <br/>
 
         <p className="edittext">Bar Rules: {data.BarRule}</p>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <p className="edittext">
-          <EditContent contentKey="BarRule" GetData = {GetData}/>
-        </p>
         <br/>
+      </div>
+
+      <div className="centext">
+        <p className="edittext">
+          <button className="Button1">Back to Bar Detail</button>
+        </p>
+        <br/><br/>
       </div>
 
     </div>

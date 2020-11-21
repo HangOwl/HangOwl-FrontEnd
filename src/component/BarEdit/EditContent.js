@@ -58,37 +58,6 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
-  async function PatchData(contentKey, contentValue) {
-    const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjlmYjY2ZWU1MjQ5YjE0Y2UxYTIwOGYiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0NzU4MTY2LCJleHAiOjE2MDQ5MzA5NjZ9.4-dmdVxy-hPH9Hvzm3TWNJ91-aYIOzSyMP2jqULriJA",
-      "id": "5f9fb66ee5249b14ce1a208f",
-      "Role": 1
-    }
-
-    const params = JSON.stringify(
-      {
-          [contentKey]: contentValue,
-      }
-    );
-
-    const config = {
-      'Authorization' : `${headers.Authorization}`,
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    }
-
-    console.log(params);
-       
-      const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id,{
-        method: 'PATCH',
-        headers: config,
-        body: params,
-      });
-
-      const EditContent = await res.json()
-      console.log(EditContent);
-    }
-
 function EditContent(props) {
     const classes = useStyles();
 
@@ -100,6 +69,37 @@ function EditContent(props) {
     const handleOpen = () => { setOpen(true) };
  
     const handleClose = () => { setOpen(false) };
+
+    async function PatchData(contentKey, contentValue) {
+      const headers = {
+        "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODU5MDE5LCJleHAiOjE2MDYwMzE4MTl9.KVisloy5nozDml6ZbUwKRIM9ugO5yyar9rnnAYVEysU",
+      "id": "5f9e6fc429e35311c62d70ac",
+      "Role": 1
+      }
+  
+      const params = JSON.stringify(
+        {
+            [contentKey]: contentValue,
+        }
+      );
+  
+      const config = {
+        'Authorization' : `${headers.Authorization}`,
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      }
+  
+         
+        const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id,{
+          method: 'PATCH',
+          headers: config,
+          body: params,
+        })
+        .then(Getdata());
+  
+        const EditContent = await res.json()
+        console.log(EditContent);
+      }
 
     return (
       <div>
@@ -126,8 +126,7 @@ function EditContent(props) {
                     className={classes.Submit} 
                     onClick={() => { 
                       PatchData(contentKey, contentValue);
-                      handleClose();
-                      Getdata();}}>Submit
+                      handleClose();}}>Submit
                   </button>
                   <button className={classes.Cancel} onClick={handleClose}>Cancel</button>
             </div>

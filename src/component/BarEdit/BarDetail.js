@@ -1,18 +1,20 @@
 import React, {useEffect, useState } from 'react';
+import Navbar from '../Nav/Navbar'
+import { Link } from 'react-router-dom'
 
 import './BarDetail.css'
 import AddPics from './AddPics'
 import CheckBoxes from './CheckBoxes'
 import EditContent from './EditContent'
+import UploadButtons from './UploadButtons';
+import EditCheckBox from './EditCheckBox';
 
-//import barpic from '/mnt/c/namtanii/Year3/SoftEng/fetchdata/src/component/img/bar1.jpg'
 
-export default function BarDetail() {
-
-  const [ data, setData ] = useState(null);
+export default function RealBarDetail() {
+  const [ data, setData ] = useState([]);
   const [ errors, setErrors ] = useState(false)
   const [picList, setPicList] = useState([])
-  const [closeDay, setCloseDay] = useState([false,false,false,false,false,false,false])
+  const [closeDay, setCloseDay] = useState({})
   const [closeDay1,setCloseDay1] = useState({
     Sunday: false,
     Monday: false,
@@ -25,8 +27,8 @@ export default function BarDetail() {
 
   async function GetData () { 
     const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjlmYjY2ZWU1MjQ5YjE0Y2UxYTIwOGYiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA0NjQyMDY3LCJleHAiOjE2MDQ4MTQ4Njd9.TfF0GrjIbGw2e3qJPCK6ytLAMJFuRB8EbjTGav9EN2c",
-    "id": "5f9fb66ee5249b14ce1a208f",
+      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODU5MDE5LCJleHAiOjE2MDYwMzE4MTl9.KVisloy5nozDml6ZbUwKRIM9ugO5yyar9rnnAYVEysU",
+    "id": "5f9e6fc429e35311c62d70ac",
     "Role": 1
     }
 
@@ -36,9 +38,7 @@ export default function BarDetail() {
     .json()
     .then(res => {  setData(res);
       setPicList(res.AdditionalPicPath);
-      console.log(res.CloseWeekDay);
       setCloseDay(res.CloseWeekDay);
-      console.log(res)
       setCloseDay1(
         {
           Sunday: res.CloseWeekDay[0],
@@ -50,8 +50,7 @@ export default function BarDetail() {
           Saturday: res.CloseWeekDay[6]
         }
       )
-    }
-    )
+    })
     .catch(err => setErrors(err));
 
   }
@@ -59,98 +58,99 @@ export default function BarDetail() {
   useEffect(() => {
     GetData();
   }, []);
-  useEffect(() => {
-    console.log(closeDay)
-  },[closeDay])
-
-  const body = (
-    <React.Fragment>
-      {data &&  <>
-      <header className="Customer-views">
-        <p className="nametext">Please type your bar details.
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="Button1" style= {{top: "2%"}}>Customer views</button>
-        </p>
-      </header>
-      <br/><br/><br/>
-      <header align="center">
-        <img width="300px" src={'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath} /> 
-        <p className="nametext">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="Button2" style= {{top: "20%"}}>Change Bar Picture</button>
-        </p>
-      </header>
-
-      <header> 
-        <AddPics addpics={picList} />
-        <button className="Button2" style= {{top: "50%"}}>Add Picture</button>
-      </header>
-
-      <header className="Customer-views">
-        <p className="nametext">Bar's Name : {data.BarName}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="BarName" />
-        </p>
-      </header>
-      <header className="Customer-views" >
-        <p className="nametext">Open Time : {data.OpenTime}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="OpenTime" />
-        </p>
-      </header>
-      <header className="Customer-views">
-        <p className="nametext">Close Time : {data.CloseTime}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="CloseTime" />
-        </p>
-      </header>
-      <header className="Customer-views">
-        <p className="nametext">Line ID : {data.LineID}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="LineID" />
-        </p>
-      </header>
-
-      <header className="Customer-views">
-        <p className="nametext">CLOSE ON :
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <CheckBoxes setCloseDay1={setCloseDay1} closeOn1={closeDay1} closeOn={closeDay}/>
-        </p>
-      </header>
-
-      <header className="Customer-views">
-        <p className="nametext">Address : {data.Address}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="Address" />
-        </p>
-      </header>
-
-      <header className="Customer-views">
-        <p className="nametext">Description : {data.BarDescription}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="Description" />
-        </p>
-      </header>
-
-      <header className="Customer-views">
-        <p className="nametext">Bar Rules : {data.BarRule}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditContent contentKey="BarRule" />
-        </p>
-      </header>
-      <button className="Button4" style= {{top: "158.65%" ,padding:"10px"}}>Back to Detail</button>
-      <br/><br/><br/><br/>
-      </>
-      }
-    </React.Fragment>
-  );
 
   return (
-    <div>
-      {body}
+    <div className="bgg">
+      <Navbar />
+      <div className="centext">
+        <p className="edittext">Please type your bar details.</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <Link to="/customerviews">
+            <button className="Button1">Customer Views</button>
+          </Link>
+        </p>
+        <br/><br/>
+      </div>
+
+      <div className="centext">
+        <img className="editpic" src={'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath} /> 
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <UploadButtons profile={"true"} GetData = {GetData}/>
+        </p>
+        <br/><br/>
+      </div>
+
+      <div className="centext">
+        <AddPics addpics={picList} />
+        <p className="edittext">
+          <UploadButtons profile={"false"} GetData = {GetData}/>
+        </p>
+      </div>
+
+      <div className="centext">
+        <p className="edittext">Bar's Name : {data.BarName}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="BarName" GetData = {GetData}/>
+        </p>
+        <br/>
+
+        <p className="edittext">Open Time : {data.OpenTime}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="OpenTime" GetData = {GetData}/>
+        </p>
+        <br/>
+
+        <p className="edittext">Close Time : {data.CloseTime}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="CloseTime" GetData = {GetData}/>
+        </p>
+        <br/>
+
+        <p className="edittext">Line ID : {data.LineID}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="LineID" GetData = {GetData}/>
+        </p>
+        <br/>
+
+        <p className="edittext">Close ON : 
+        <CheckBoxes setCloseDay1={setCloseDay1} closeOn1={closeDay1} closeOn={closeDay}/>
+        <p className="edittext">
+          <EditCheckBox GetData = {GetData}/>
+        </p>
+        </p>
+        <br/>
+
+        <p className="edittext">Address : {data.Address}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="Address" GetData = {GetData}/>
+        </p>
+        <br/>
+
+        <p className="edittext">Description: {data.BarDescription}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="BarDescription" GetData = {GetData}/>
+        </p>
+        <br/>
+
+        <p className="edittext">Bar Rules: {data.BarRule}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p className="edittext">
+          <EditContent contentKey="BarRule" GetData = {GetData}/>
+        </p>
+        <br/>
+      </div>
+
     </div>
-  );
+  )
+
+  
 
 }
-
-
