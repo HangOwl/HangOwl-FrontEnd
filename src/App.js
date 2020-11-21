@@ -23,7 +23,7 @@ function App() {
                <Route path='/customerviews' component={ShowBarDetail} />
             </Switch>
          </Router>
-         
+         {/* HELLO */}
          {/* <RealBarDetail /> */}
          {/* <UploadButtons /> */}
 
