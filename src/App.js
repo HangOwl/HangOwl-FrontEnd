@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 import './App.css';
-
+//import Navbar from './components/Navbar';
+// import Bars from './contents/bars'
+import ResList from './reservationLists';
+import BarHomepage from './barHomepage';
 import BarDetail from './component/BarEdit/BarDetail';
 // import UploadButtons from './component/BarEdit/UploadButtons';
 // import Navbar from './component/Nav/Navbar';
@@ -23,6 +25,7 @@ function App() {
                <Route path='/customerviews' component={ShowBarDetail} />
             </Switch>
          </Router>
+             <ResList />
          {/* HELLO */}
          {/* <RealBarDetail /> */}
          {/* <UploadButtons /> */}
@@ -38,7 +41,4 @@ function App() {
       </div>
    );
 }
-
 export default App;
-
-
