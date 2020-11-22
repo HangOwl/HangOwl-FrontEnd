@@ -15,7 +15,30 @@
     color: #ffffff;
 }
 
+.checkBut{
+    height: 50px;
+    width: 150px;
+    border-radius: 0px;
+    background-image: url("./img/Button1.png");
+    background-position: center;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Impact;
+    display: inline-block;
+}
+
+.editBut{
+    height: 68px;
+    width: 200px;
+    background-image: url("./img/Button2.png");
+    background-position: center;
+    color: #ffffff;
+    font-size: 22px;
+    font-family: Impact;
+}
+
 .Bar{
     background-image: url("./img/BarBG(4K).jpg"); 
 }
   
+

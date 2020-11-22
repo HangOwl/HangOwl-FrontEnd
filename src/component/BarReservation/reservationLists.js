@@ -16,6 +16,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import List from './ResListField';
+import './BarReservation.css';
 
 
 function TabPanel(props) {
@@ -71,6 +72,13 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
     marginRight : "10px"
   },
+  tab:{
+    background : "#b30059",
+  },
+
+  label:{
+    textColor : "#ffffff",
+  }
 }));
 
 export default function ResList() {
@@ -215,21 +223,20 @@ export default function ResList() {
     <body className = "body">
     <Navbar />
     <div className={classes.root}>
-      <h1 className="center_txt">List of Reservation </h1>
-      <br></br>
-      <AppBar position="static" color="default">
+    <center className="nametext"><h1>List Of Reservations</h1><br/></center>
+      <AppBar position="static" color="default" className = {classes.tab}>
         <Tabs
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
-          textColor="primary"
+          textColor="#ffffff"
           variant="fullWidth"
           aria-label="full width tabs example"
         >
           <Tab onClick={()=> {
               setIndex(0)
               handleChangeData(-1)
-          }} label="All Reservation" {...a11yProps(0)} />
+          }} label="All Reservation" {...a11yProps(0)} className = {classes.label}/>
           <Tab onClick={()=> {
               setIndex(1)
               handleChangeData(1)
@@ -245,7 +252,8 @@ export default function ResList() {
       <br></br>
       <br></br>
       <div>
-      <EmergencyButton getData={fetchData}/>
+      
+      <center><p className="emerBut"><EmergencyButton getData={fetchData}/></p>
       <FormControl variant="outlined" className = {classes.emerTabs}>
       <TextField
           id="standard-textarea"
@@ -257,13 +265,13 @@ export default function ResList() {
         {/* <InputLabel htmlFor="component-outlined">Filter Date</InputLabel>
         <OutlinedInput id="component-outlined" value={date} onChange={(event) => {setDate(event.target.value);console.log(event.target.value)}} label="Date" /> */}
       </FormControl>
-      <Button variant="contained" color="primary" onClick={() => {handleChangeData(state);}}>
+      <p className = "filterBut"><Button variant="contained" color="primary" onClick={() => {handleChangeData(state);}}>
         Filer By Date
-      </Button>
+      </Button></p></center>
       </div>
         <TabPanel value={value} index={index} dir={theme.direction}>
-        <p className = {classes.heading}>Total Accepted Seats : {seats}</p>
-        <p className = {classes.heading}>All Reservation : {allReserve}</p>
+        <p className="Accepttext">Total Accepted Seats : {seats}</p>
+        <p className="Totaltext">All Reservation : {allReserve}</p>
         <br></br>
         <div className={classes.reserveList}>
           <List getData={fetchData} data={data}/>

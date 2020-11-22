@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   card:{
-      background : "powderblue",
+      background : "#e699cc",
   },
 
   button:{

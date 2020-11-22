@@ -11,13 +11,14 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+import button from '@material-ui/core/button';
 
 import welcome from './img/Welcome_To_HangOwl.png'
 
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
+      background : "#e699cc",
     },
     List: {
         width: "100%",
@@ -29,11 +30,11 @@ const useStyles = makeStyles({
       margin : "auto",
       allignItem : "center",
     },
-    Button1: {
+    button1: {
       width: "50px",
       height: "50px",
       backgroundColor: "#E11584"
-    }
+    },
   });
 
   export default function BarHomepage() {
@@ -82,9 +83,9 @@ const useStyles = makeStyles({
         Pending Reservations 
       </span>&nbsp;&nbsp;&nbsp;&nbsp;
       <Link to ="/reservations">
-        <Button variant="contained" color="secondary" allignItem="center">
+        <button className = "checkBut" variant="contained" allignItem="center">
           Check Reservations
-        </Button>
+        </button>
       </Link>
     </center>
     <br/><br/>
@@ -110,9 +111,9 @@ const useStyles = makeStyles({
       
     </div><center>
       <Link to ="/bardetails">
-        <Button variant="contained" color="secondary">
+        <button className = "editBut" variant="contained">
           Edit Bar's Details
-        </Button>
+        </button>
       </Link>
       </center></div>
       </div>
