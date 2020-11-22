@@ -61,11 +61,13 @@ function StatusCancel({ResId} : {ResId:any}){
   const toggle = () => setModal(!modal);
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
   let history = useHistory();
+  const token:any = localStorage.getItem("user");
+  const accessToken:any = JSON.parse(token);
 
   const handleClick = () => {
     axios.delete(`http://35.240.130.253:3001/reservations/${ResId}`,{
       headers: {
-        'Authorization' : `${window.Auth}`,
+        'Authorization' : `${accessToken.Authorization}`,
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }

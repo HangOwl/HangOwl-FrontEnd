@@ -9,9 +9,10 @@ import FavoriteBar from './FavoriteBar';
 
 const CustomerHome = () => {
     useEffect(() => {
-        axios.get(`http://35.240.130.253:3001/customers/${window.cusID}`, {
+        const accessToken = JSON.parse(localStorage.getItem("user"));
+        axios.get(`http://35.240.130.253:3001/customers/${accessToken.id}`, {
                 headers: {
-                    'Authorization': `${window.Auth}`
+                    'Authorization': `${accessToken.Authorization}`
                 }
             }).then((response) => {
                 console.log(response);

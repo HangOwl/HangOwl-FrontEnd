@@ -15,6 +15,8 @@ function CustomerBarDetail({match} : {match:any}) {
     const barID = match.params.barID;
     const [images,setImages] = useState<any>('');
     const [value,setValue] = useState<any>('');
+    const token:any = localStorage.getItem("user");
+    const accessToken:any = JSON.parse(token);
 
 
 
@@ -24,10 +26,9 @@ function CustomerBarDetail({match} : {match:any}) {
         }
     );
     const favCLick = () => {
-        console.log('cusID : ',window.cusID);
-        axios.post(`http://35.240.130.253:3001/customers/${window.cusID}/favbars`, params,{
+        axios.post(`http://35.240.130.253:3001/customers/${accessToken.id}/favbars`, params,{
             headers: {
-                'Authorization' : `${window.Auth}`,
+                'Authorization' : `${accessToken.Authorization}`,
                 'Access-Control-Allow-Origin': '*'
             }
         }).then((response) => {
@@ -36,10 +37,9 @@ function CustomerBarDetail({match} : {match:any}) {
     }
 
     const favCLick2 = () => {
-        console.log('cusID favClick2 : ',window.cusID);
-        axios.delete(`http://35.240.130.253:3001/customers/${window.cusID}/favbars/${barID}`,{
+        axios.delete(`http://35.240.130.253:3001/customers/${accessToken.id}/favbars/${barID}`,{
             headers: {
-                'Authorization' : `${window.Auth}`,
+                'Authorization' : `${accessToken.Authorization}`,
                 'Access-Control-Allow-Origin': '*'
             }
         }).then((response) => {
