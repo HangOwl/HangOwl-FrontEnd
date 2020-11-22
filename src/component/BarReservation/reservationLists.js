@@ -251,9 +251,13 @@ export default function ResList() {
       <div>
       
       <center><p className="emerBut"><EmergencyButton getData={fetchData}/></p>
-      <FormControl variant="outlined" className = {classes.emerTabs}>
+      <p ><button variant="contained"  className = "filterBut" color="primary" onClick={() => {handleChangeData(state);}}>
+        Filer By Date
+      </button></p>
+      &nbsp;&nbsp;&nbsp;
+      <p><form   className = "filter">
       <TextField
-          id="standard-textarea"
+          id="outlined-basic"
           label="Filter By Date"
           placeholder="DD-MM-YYYY"
           multiline
@@ -261,10 +265,11 @@ export default function ResList() {
         />
         {/* <InputLabel htmlFor="component-outlined">Filter Date</InputLabel>
         <OutlinedInput id="component-outlined" value={date} onChange={(event) => {setDate(event.target.value);console.log(event.target.value)}} label="Date" /> */}
-      </FormControl>
-      <p className = "filterBut"><Button variant="contained" color="primary" onClick={() => {handleChangeData(state);}}>
-        Filer By Date
-      </Button></p></center>
+      </form></p>
+      </center>
+      <br></br>
+      <br></br>
+      <br></br>
       </div>
         <TabPanel value={value} index={index} dir={theme.direction}>
         <p className="Accepttext">Total Accepted Seats : {seats}</p>
