@@ -154,7 +154,7 @@ export default function BarDetail() {
 
       <div className="centext">
         <p className="edittext">
-          <Link to="/">
+          <Link to="/BarHome">
             <button className="Button1">Back to Bar Detail</button>
           </Link>
         </p>

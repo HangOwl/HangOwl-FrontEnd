@@ -1,3 +1,9 @@
 body{
-  background-image: url("./component/img/BarBG(4K).jpg"); 
+  background-image: "../Pics/backgroundHomePage.jpg";
+  height: 100vh;
+  min-height: 500px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }

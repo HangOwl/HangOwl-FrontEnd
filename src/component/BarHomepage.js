@@ -13,7 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-import welcome from '/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/Welcome_To_HangOwl.png'
+import welcome from './img/Welcome_To_HangOwl.png'
 
 const useStyles = makeStyles({
     table: {
@@ -68,7 +68,7 @@ const useStyles = makeStyles({
       }, []);
   
     return (
-    <body className = "body">
+    <div className="Bar">
     <Navbar />
 
     <div>
@@ -115,7 +115,7 @@ const useStyles = makeStyles({
         </Button>
       </Link>
       </center></div>
+      </div>
 
-    </body>
     );
   }

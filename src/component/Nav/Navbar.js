@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Sidebar_bars } from './Sidebar';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
-import logo from '/mnt/c/namtanii/Year3/SoftEng/HangOwl-FrontEnd/src/component/img/HangOwlLogo (2).png';
+import logo from '../img/HangOwlLogo (2).png';
 
 
 function Navbar() {
@@ -53,7 +53,7 @@ function Navbar() {
             <FaIcons.FaBars onClick={() => {showSidebar(); handleChange2();}} />
           </Link>
           
-          <Link to='/'><img className="logo_photo" src={logo} /></Link>
+          <Link to='/BarHome'><img className="logo_photo" src={logo} /></Link>
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

@@ -1,0 +1,111 @@
+.bgg2{
+    background-image: url("../Pics/CustomerBG.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 500px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  overflow-x: scroll;
+}
+
+.container3 {
+  display: flex;
+  overflow-x: scroll;
+  width: 80%;
+  padding-left: 100px;
+}
+
+.bgg{
+  background-image: url("../Pics/CustomerBG.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 500px;  
+  height: 100vh;
+  display: inline-table;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 250px;
+    max-width: 100%;
+    margin: 50px;
+    overflow: hidden;
+    border-radius: 0px;
+    padding: 0;
+  }
+  
+  .box1st {
+    height: 200px;
+    width: 50%;
+    background-color: #005365;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box2nd {
+    height: 50px;
+    width: 50%;
+    background-color: #61E9F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .textInBox1st {
+    position: absolute;
+    font-family: Impact;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    color: #FFFFFF;
+  }
+  
+  .textInBox2nd {
+    position: absolute;
+    font-family: Impact;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000000;
+  }
+  
+  .destext{
+    font-family: Impact;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.rsdiv{
+    text-align: center;
+}
+
+.rectext{
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+.rectext2{
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  padding-left: 120px;
+  text-align: left;
+  color: #ffffff;
+}
