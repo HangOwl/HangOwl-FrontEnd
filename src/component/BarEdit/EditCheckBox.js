@@ -20,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3),
         alignItems: 'center',
         margin: '0px auto',
-        color: '#E11584',
+        color: '#fff',
       },
     paper: {
       position: 'absolute',
       height: '500px',
       width: '280px',
       backgroundImage: `url(${BarBG})`,
-      backgroundColor: '#fff',
+      backgroundColor: '#231f21',
       border: '2px solid #000',
       padding: theme.spacing(2, 4, 3),
       top: "50%",
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     text: {
       fontFamily: 'Impact', 
       fontSize: '30px',
-      color: '#E11584',
+      color: '#fff',
       textAlign: 'center',
     },
     box: {

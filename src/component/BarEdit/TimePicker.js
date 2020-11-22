@@ -1,6 +1,6 @@
 import Modal from '@material-ui/core/Modal';
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import BarBG from '../img/BarBG(4K).jpg';
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         height: '212px',
         width: '348px',
         backgroundImage: `url(${BarBG})`,
-        backgroundColor: '#fff',
+        backgroundColor: '#231f21',
         border: '2px solid #000',
         padding: theme.spacing(2, 4, 3),
         top: "50%",
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     text: {
         fontFamily: 'Impact', 
         fontSize: '30px',
-        color: '#E11584',
+        color: '#fff',
         textAlign: 'center',
     },
     Submit: {
@@ -56,6 +56,26 @@ const useStyles = makeStyles((theme) => ({
         color: '#fff',
       },
 }));
+
+const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: "white"
+        },
+        '& label': {
+            color: "white"
+        },
+        '& input': {
+            color: "white"
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: "white"
+        },
+        '& .MuiInput-underline:before': {
+            borderBottomColor: "white"
+        }
+    }
+})(TextField);
 
 export default function TimePickers(props) {
     const classes = useStyles();
@@ -102,7 +122,7 @@ export default function TimePickers(props) {
              <div className={classes.paper}>
                 <h1 className={classes.text}>Edit your Detail</h1>
                 <form className={classes.container} noValidate>
-                    <TextField
+                    <CssTextField
                         id="time"
                         label={contentKey}
                         type="time"
@@ -110,7 +130,7 @@ export default function TimePickers(props) {
                         className={classes.textField}
                         InputLabelProps={{
                         shrink: true,
-                        color: 'secondary'
+                        
                         }}
                         inputProps={{
                         step: 300, // 5 min
@@ -118,7 +138,6 @@ export default function TimePickers(props) {
                         onChange={(event) => setcontentValue(event.target.value)}
                     />
                 </form>
-                console.log({contentValue});
                 <br/>
                 <button 
                     className={classes.Submit} 

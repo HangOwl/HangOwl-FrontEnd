@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       height: '212px',
       width: '348px',
       // backgroundImage: `url(${BarBG})`,
-      backgroundColor: '#fff',
+      backgroundColor: '#231f21',
       border: '2px solid #000',
       padding: theme.spacing(2, 4, 3),
       top: "50%",
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     text: {
       fontFamily: 'Impact', 
       fontSize: '30px',
-      color: '#E11584',
+      color: '#fff',
       textAlign: 'center',
     },
     box: {

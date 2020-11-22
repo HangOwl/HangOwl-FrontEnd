@@ -78,7 +78,6 @@ export default function Checkboxes({closeOn,closeOn1,setCloseOn1}) {
     <div className={classes.root}>
       <FormControl 
         component="fieldset" 
-        disabled
       >
         <FormGroup >
           <FormControlLabel 
