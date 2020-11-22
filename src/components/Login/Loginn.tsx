@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { FormGroup, Label, Col, Button, Modal, ModalHeader }  from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage , FormikHelpers } from 'formik'
@@ -28,7 +28,7 @@ interface Value2{
 function Loginn(){
   var Auth = window.Auth;
   const [modal, setModal] = useState(true);
-  const toggle = () => setModal(!modal);
+  const toggle = () => {setModal(!modal); history.push('/')}
   const closeBtn = <button className="close" onClick={() => {toggle(); handleClick();}} >&times;</button>;
   let history = useHistory();
 
@@ -36,22 +36,19 @@ function Loginn(){
   const [password, setPassword] = useState('');
 
 
-  const setTime = () => {
-    setTimeout(() => {
-      setUsername('');
-    }, 500);
-
-  }
-
   const handleClick = () => {
     console.log('Role handleClick: ', window.Role);
     
-    history.push('/');
+    if(window.Role == 0){
+      history.push(`/customerhome/${window.cusID}`);
+    }else{
+      history.push('/');
+    }
 
   }
 
   const handleChange = () =>{
-    //setOpen(false);
+    console.log('na');
     const param = JSON.stringify(
       {
           username: username,
@@ -59,29 +56,44 @@ function Loginn(){
       }
 
   )            
-  //{console.log(param)}
-  console.log(username);
-  console.log(password);
   axios.post("http://35.240.130.253:3001/auth/login", param,{
       headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
       }
-  })
-  .then((response) => {
-      console.log(response.data.Authorization);
-      if(response.data.Authorization){
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
+  }).then((response) => {
+      console.log(response);
+      Auth = response.data.Authorization;
+      window.Auth = Auth;
+      window.Role = response.data.Role;
+      window.ID = response.data.id;
+      window.cusID = response.data.id;
+      setUsername('');
+      setPassword('');
+      setModal(!modal);
+      console.log('Role: ', window.Role);
       handleClick();
 
 
   }).catch(error => {
       console.log(error);
+      setModal(!modal);
+      setModal(true);
+
+      // setModal(false);
   });      
   
 
   };
+
+  useEffect(() => {
+    if(username != '' && password != ''){
+      handleChange();
+      setModal(!modal);
+    }else if(username == '' && password == ''){
+      setModal(true);
+    }
+  }, [username,password]);
 
   return(
     <div>
@@ -101,9 +113,11 @@ function Loginn(){
             ) => {
               setTimeout(() => {
                 {/*alert(JSON.stringify(values, null, 2));*/}
-                history.push('/')
+                // history.push('/')
                 setSubmitting(false);
               }, 500);
+              setUsername(values.email);
+              setPassword(values.password);
             }}
             validationSchema={RegisterSchema}
           >
@@ -116,9 +130,9 @@ function Loginn(){
                 <Field name="email" 
                         type="email" 
                         id="email" 
-                        value={username} 
-                        onChange={(e:any) => setUsername(e.target.value)}
-                        //className={`form-control ${touched.email ? errors.email ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={username} 
+                        // onChange={(e:any) => setUsername(e.target.value)}
+                        className={`form-control ${touched.email ? errors.email ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="xxxx@email.com"/>
                 <ErrorMessage component="div" name="email" className="invalid-feedback" />
               </FormGroup>
@@ -129,9 +143,9 @@ function Loginn(){
                 <Field name="password" 
                         type="password" 
                         id="password" 
-                        value={password}
-                        onChange={(e:any) => setPassword(e.target.value)}
-                        //className={`form-control ${touched.password ? errors.password ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={password}
+                        // onChange={(e:any) => setPassword(e.target.value)}
+                        className={`form-control ${touched.password ? errors.password ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="password"/>
                 <ErrorMessage component="div" name="password" className="invalid-feedback" />
               </FormGroup>
@@ -142,7 +156,7 @@ function Loginn(){
                 className='submitbut3'
                 type='submit'
                 value='submit'
-                onClick={() => {handleChange(); setModal(!modal);}}
+              onClick={() => {setModal(modal);}}
               >
                 <p className='submittext3'>Login</p>
               </Button>

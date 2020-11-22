@@ -2,14 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CustomerBarPic.css';
 import defaultimage from '../Pics/default.jpg';
-import { LocalShipping } from '@material-ui/icons';
-
 
 const CustomerBarPic = ({barID}: {barID:any}) => {
-
-const token:any = localStorage.getItem("user");
-const accessToken = JSON.parse(token);
-
 const [image,setImages] = useState([]);
 const [profile, setProfile] = useState('');
 //const barID = match.params.barID;
