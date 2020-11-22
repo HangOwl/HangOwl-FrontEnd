@@ -217,7 +217,7 @@ export default function ResList() {
 
   const allReserve = info.length;
   return (
-    <body className = "body">
+    <body className = "BG">
     <Navbar />
     <div className={classes.root}>
     <center className="nametext"><h1>List Of Reservations</h1><br/></center>
