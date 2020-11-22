@@ -9,7 +9,7 @@ import Navbar from '../Navbar/Navbar';
 
 function Signupchoose(){
   return (
-    <div >
+    <div className="Landing">
       <Navbar />
       <br/><br/>
       <h1 className='signupas'> You're sign up as...</h1>

@@ -20,7 +20,7 @@ const CustomerHome = () => {
             });
     }, [])
     return (
-        <div className="bgg">
+        <div className="bgg2">
             <Navbar2/>
             <br/><br/><br/>
             <div>

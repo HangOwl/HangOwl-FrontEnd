@@ -48,7 +48,7 @@ function BarDetail({match}) {
     return (
         <div>
             <Navbar />
-            <div>
+            <div className="Landing">
                 {/*<ul>{bardetail && bardetail.map(item => <li key={item._id}> {item._id} </li>)} </ul>*/}
                 <br/><br/>
                 <header>
