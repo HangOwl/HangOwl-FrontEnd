@@ -31,14 +31,28 @@ function CustomerBarDetail({match} : {match:any}) {
       ];
 
     const MapDay = () => {
+        var Day = '';
         for(var i = 0; i < closeday.length; i++) {
-            if(closeday[i] == true) {
-                return (Week[i].name);
+            if(closeday[i] ===true) {
+                // console.log(Week[i].name);
+                Day = Day + Week[i].name + ' ';
             }
-        }        
+            
+        }   
+        return <> {Day} </>     
     };
 
+   const CheckFav = () => {
+        {console.log('image',images._id)}
 
+        favbar.map((bars:any) => {
+            // {console.log('bar',bars._id)}
+            if(bars._id == images._id){
+                console.log('bars', bars._id);
+
+            }
+        })
+    }
 
     const params = (
         {
@@ -54,7 +68,7 @@ function CustomerBarDetail({match} : {match:any}) {
                 }
             }).then((response) => {
                 setFavbar(response.data);
-                console.log(response.data);
+                console.log('fav',response.data);
             });            
 
     // }
@@ -107,6 +121,7 @@ function CustomerBarDetail({match} : {match:any}) {
     },[])
     return (
         <div>
+            {CheckFav()}
             <Navbar2 />
             <div className="bgg">
                 {/*<ul>{bardetail && bardetail.map(item => <li key={item._id}> {item._id} </li>)} </ul>*/}
