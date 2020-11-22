@@ -9,10 +9,9 @@ import FavoriteBar from './FavoriteBar';
 
 const CustomerHome = () => {
     useEffect(() => {
-        const accessToken = JSON.parse(localStorage.getItem("user"));
-        axios.get(`http://35.240.130.253:3001/customers/${accessToken.id}`, {
+        axios.get(`http://35.240.130.253:3001/customers/${window.cusID}`, {
                 headers: {
-                    'Authorization': `${accessToken.Authorization}`
+                    'Authorization': `${window.Auth}`
                 }
             }).then((response) => {
                 console.log(response);
@@ -21,14 +20,14 @@ const CustomerHome = () => {
             });
     }, [])
     return (
-        <div className="bgg2">
+        <div className="bgg">
             <Navbar2/>
             <br/><br/><br/>
             <div>
                 <img src={Welcome} className="welcome" alt="" />
             </div>
             <header>
-                <h1 className='rectext'><br/><br/><br/>Let's have a look for some recommended Bars :)</h1>
+                <h1 className='rectext3'><br/><br/><br/>Let's have a look for some recommended Bars :)</h1>
             </header>
             {/* <CustomerBarCard/> */}
             
@@ -39,7 +38,7 @@ const CustomerHome = () => {
             <br/><br/>
             <h1 className='rectext2'><br/>All Bars</h1>
             <CustomerBarCard />
-
+            <br />
         </div>
     );
 };
