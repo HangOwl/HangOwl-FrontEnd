@@ -17,7 +17,7 @@ import welcome from './img/Welcome_To_HangOwl.png'
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
-      background : "#e699cc",
+      background : "#FF7CF5",
     },
     List: {
         width: "100%",
@@ -30,8 +30,8 @@ const useStyles = makeStyles({
       allignItem : "center",
     },
     button1: {
-      width: "50px",
-      height: "50px",
+      width: "80px",
+      height: "80px",
       backgroundColor: "#E11584"
     },
   });
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
           }));
         })
           .catch(err => setErrors(err));
-        //console.log(data);
+
         console.log(info)
         console.log(bar)
       }
@@ -85,7 +85,7 @@ const useStyles = makeStyles({
         </button>
       </Link>
     </center>
-    <br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
     <div className={classes.List}>
       <TableContainer component={Paper}>
@@ -113,6 +113,7 @@ const useStyles = makeStyles({
         </button>
       </Link>
       </center></div>
+      <br/>
       </div>
 
     );

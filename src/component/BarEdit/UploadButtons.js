@@ -50,6 +50,7 @@ export default function UploadButtons(props) {
   const [pic, setPic] = useState(null)
   const [open, setOpen] = useState(false)
   const Getdata = props.GetData;
+  const buttonVal = props.value;
 
   const accessToken = JSON.parse(localStorage.getItem("user"));
 
@@ -83,14 +84,14 @@ export default function UploadButtons(props) {
   return (
     <div>
         <button className="Button2" onClick={modalOpen}>
-            Change your picture
+            {buttonVal}
         </button>
         <Modal
           open={open}
           onClose={modalClose}
         >
             <div className={classes.root}>
-              <h1 className={classes.text}>Upload your bar's picture</h1>
+              <h1 className={classes.text}>Upload your picture</h1>
               <label className={classes.custom}>
                 <input
                   accept="image/*"
