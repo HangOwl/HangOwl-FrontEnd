@@ -75,7 +75,8 @@ export default function EmergencyButton(props){
       'Content-type': 'application/json; charset=UTF-8'
     },
     body: JSON.stringify({
-      "date": date
+      "date": date,
+      "reason" : reason
     })
     })
     .then(res => console.log(res)) // or res.json()
@@ -120,9 +121,9 @@ export default function EmergencyButton(props){
 
   return (
     <div>
-      <Button variant="contained" color="secondary" onClick={handleOpen}>
-        EMEGENCY CLOSE
-      </Button>
+      <button className = "emerBut" variant="contained" color="secondary" onClick={handleOpen}>
+        E M E R G E N C Y  CLOSE
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
