@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   card:{
-      background : "#e699cc",
+      background : "#D87BEA",
   },
 
   button:{

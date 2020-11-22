@@ -148,7 +148,7 @@ export default function BarDetail() {
         <p className="edittext">
           <EditContent contentKey="BarRule" GetData = {GetData}/>
         </p>
-        <br/>
+        <br/><br/>
       </div>
 
       <div className="centext">

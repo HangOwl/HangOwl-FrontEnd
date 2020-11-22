@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import BarPic from '../components/BarCard/BarPic';
-import Navbar2 from '../components/Navbar/Navbar2';
-import CustomerBarForm from '../pages/CustomerBarForm';
+import Navbar2 from './Nav/Navbar';
 import '../pages/CustomerHome.css'
 import CustomerBarPic from '../pages/CustomerBarPic';
 import Rating from '@material-ui/lab/Rating';
-import FavBar from '../pages/FavBar';
 
 
 function Customerviews() {
@@ -24,15 +21,13 @@ function Customerviews() {
                         'Access-Control-Allow-Origin': '*'
                     }
                 }).then((response) => {
-                    // console.log(response.data);
                     setImages(response.data);
                 });      
     },[])
     return (
         <div>
             <Navbar2 />
-            <div className="bgg">
-                {/*<ul>{bardetail && bardetail.map(item => <li key={item._id}> {item._id} </li>)} </ul>*/}
+            <div className="bgg1">
                 <br/><br/>
                 <header>
                     <h1 className='nametext'>{images.BarName}
@@ -53,10 +48,8 @@ function Customerviews() {
                     Close On: {images.CloseWeekDay}<br/><br/>
                     
                     LINE ID: {images.LineID}<br/>
-                    {/* Tel: 012-345-6789<br/><br/> */}
                     Address: {images.Address}<br/><br/>
-                    Bar's Rule: {images.BarRule}<br/><br />
-                    {/* Bar's Rule: If you want larger table, please tell us<br/> one day before your reserved date<br/><br/> */}
+                    Bar's Rule: {images.BarRule}<br/><br/>
                 </p>
                 
                 <br/>
@@ -74,15 +67,5 @@ function Customerviews() {
         </div>
     );
 }
-
-/*
-function BarDetail(props: { isLogin: any; }) {
-    const isLogin = props.isLogin;
-    return(<BarDescription/>);
-    if (isLogin){
-        return <ReserveForm/>;
-    }return <Login/>;
-}
-*/
 
 export default Customerviews;
