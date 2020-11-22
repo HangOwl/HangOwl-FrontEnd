@@ -1,0 +1,46 @@
+.nametext{
+    font-family: Impact; 
+    font-size: 30px;
+    text-align: center;
+    color: #cc3399;
+}
+.Accepttext{
+    font-family: Impact; 
+    font-size: 30px;
+    color: #ffffff;
+    float:left;
+}
+.Totaltext{
+    font-family: Impact; 
+    font-size: 30px;
+    color: #ffffff;
+    float:right;
+}
+
+.card{
+    background-color : #e699cc;
+    font-family : Impact;
+}
+
+.emerBut{
+    float : left;
+    height: 50px;
+    width: 150px;
+    border-radius: 0px;
+    background-image: url("../img/Button1.png");
+    background-position: center;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Impact;
+    display: inline-block;
+
+}
+
+.filterBut{
+    float : right;
+    
+}
+
+.BG{
+    background-image: url('../img/BarBG(4K).jpg');
+}

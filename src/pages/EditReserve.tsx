@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import * as Yup from 'yup'
 import axios from 'axios';
 import './EditProfile.css'
-import StatusEdit from './StatusEdit';
+
 
 const RegisterSchema = Yup.object().shape({
   detail: Yup.string(),
@@ -18,8 +18,7 @@ interface Value2{
 
 interface CardProps {
     ResId: any,
-    Name: any,
-    GetData: any
+    Name: any
 }
 function EditReserve(props: CardProps){
     console.log(props.Name);
@@ -28,18 +27,17 @@ function EditReserve(props: CardProps){
   const toggle = () => setModal(!modal);
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
   let Auth = window.Auth;
-  const [click, setClick] = useState(false);
   const [value, setValue] = useState('');
   const [name, setName] = useState('');
   let history = useHistory();
 
   const handleClick = () => {
-    {console.log('handle')}
-    if(name != '' && value != ''){
-      props.GetData();
-    }
+    history.push('/checkstatus')
   }
-
+  
+//   useEffect(() => {
+//     // history.push('/checkstatus')
+//   }, [value]);
   const handleChange = () => {
     const params = JSON.stringify(
       {
@@ -47,6 +45,10 @@ function EditReserve(props: CardProps){
       }
     );
 
+    // console.log(Auth);
+    // console.log(datereserve);
+    // console.log(numberofpeople);
+    // console.log('window', window.Auth);
     axios.patch(`http://35.240.130.253:3001/reservations/${props.ResId}`, params,{
       headers: {
         'Authorization' : `${window.Auth}`,
@@ -55,12 +57,17 @@ function EditReserve(props: CardProps){
       }
     }).then((response) => {
       console.log(response);
-      handleClick();
+      if(response.request.status == '200'){
+          console.log('status');
+        history.push('/checkstatus');
+      }
 
+      //window.Name = response.data.Name;
     });
 
     console.log(Auth);
   }
+
 
   return(
     <div>
@@ -82,7 +89,6 @@ function EditReserve(props: CardProps){
               setTimeout(() => {
                 setSubmitting(false);
               }, 500);
-              // setName(values.detail);
             }}
             validationSchema={RegisterSchema}
           >
@@ -94,9 +100,12 @@ function EditReserve(props: CardProps){
                 <Field name={props.Name}
                         type="text" 
                         id="detail" 
+                        // value={postscript}
+                        // onChange={(e:any) => setPostscript(e.target.value)}
                         value={value}
                         onChange={(e:any) => {
                               setName(e.target.name);
+                              //window.Name = e.target.value;
                               setValue(e.target.value);
                         }}
                         className={`form-control ${touched.detail ? touched.detail ? 'is-invalid' : 'is-valid' : ''}`}
@@ -112,7 +121,6 @@ function EditReserve(props: CardProps){
               >
                 <p className='submittext2'>Edit</p>
               </Button>
-              
             </div>     
             <br/>     
             </Form>

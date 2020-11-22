@@ -35,6 +35,10 @@ function EditPassword(){
       }
     );
 
+    // console.log(Auth);
+    // console.log(datereserve);
+    // console.log(numberofpeople);
+    // console.log('window', window.Auth);
     axios.post("http://35.240.130.253:3001/reservations", params,{
       headers: {
         'Authorization' : `${window.Auth}`,

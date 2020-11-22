@@ -12,6 +12,10 @@ function BarCardMatch() {
         <h1 className='matchtext'>Match result</h1>
       </header>
       <BarCard/>
+      <BarCard/>
+      <BarCard/>
+      <BarCard/>
+      <BarCard/>
     </div>
   );
 }

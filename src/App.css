@@ -1,15 +1,7 @@
-.container{
-    background-image: url("./Pics/backgroundHomePage.jpg");
-  }
-.s1 {
-    background-color: aqua;
-}
-
-body {
-    background-image: url("./Pics/backgroundHomePage.jpg");
-    height: 100% ;
-    width: 100% ;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+body{
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow-y: visible;
 }

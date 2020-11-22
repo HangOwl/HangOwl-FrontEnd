@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home';
 import BarDetail from './components/BarCard/BarDetail';
 import BarCardMatch from './components/BarCard/BarCardMatch';
@@ -14,65 +14,43 @@ import CustomerReserveii from './pages/CustomerReserveii';
 import CustomerBarDetail from './pages/CustomerBarDetail';
 import Edit from './pages/Edit'
 import FavBar from './pages/FavBar'
-import ErrorReserve from './pages/ErrorReserve';
 import NewPassword from './pages/NewPassword';
 import StatusCheck from './pages/StatusCheck';
+import BarProfile from './component/BarEdit/BarDetail';
+import BarHomepage from './component/BarHomepage'
+import ShowBarDetail from './component/ShowBarDetail'
+import ReservationList from './component/BarReservation/reservationLists'
+import Logout from './components/Login/Logout'
 
 function App() {
-  return (
-      <Router>
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/login' component={Loginn} />
-          <Route path='/signup' component={Signupchoose}/>
-          <Route path='/cannotreserve/:barID' component={ErrorReserve}/>
-          <Route path='/searchresult/' component={BarCardMatch} />
-          <Route path='/BarDetail/:barID' component={BarDetail} />
-          <Route path='/Reserveii/' component={Reserveii} />
-          <Route path='/Forgotpw/' component={Forgotpw} />
-          <Route path='/ConfirmLink/' component={ConfirmLink} />
-          <Route path='/CustomerHome/' component={CustomerHome} />
-          <Route path='/CustomerBarDetail/:barid' component={CustomerBarDetail} />
-          <Route path='/profile/:cusID' component={Edit} />
-          <Route path='/checkstatus/' component={StatusCheck} />
-          <Route path='/test2/' component={FavBar} />
-          <Route path='/change_password/:token' component={NewPassword} />
-          <Route path='/CustomerReserveii' component={CustomerReserveii} />
 
-        </Switch>
-      </Router>
-  );
-}
-
-export default App;
-
-/*
-import React from 'react';
-import unsplash from './api/unsplash';
-import SearchBar from './components/SearchBar';
-import ImageList from './components/ImageList';
-
-class App extends React.Component {
-  state = { images: [] };
-
-  onSearchSubmit = async term => {
-    const response = await unsplash.get('/search/photos', {
-      params: { query: term }
-    });
-
-    this.setState({ images: response.data.results });
-  };
-
-  render() {
-    return (
-      <div className="ui container" style={{ marginTop: '10px' }}>
-        <SearchBar onSubmit={this.onSearchSubmit} />
-        <ImageList images={this.state.images} />
+   return (
+      <div className="App">
+         <Router>
+            <Switch>
+               <Route path='/' exact component={Home} />
+               <Route path='/login' component={Loginn} />
+               <Route path='/signup' component={Signupchoose}/>
+               <Route path='/searchresult/' component={BarCardMatch} />
+               <Route path='/BarDetail/:barID' component={BarDetail} />
+               <Route path='/Reserveii/' component={Reserveii} />
+               <Route path='/Forgotpw/' component={Forgotpw} />
+               <Route path='/ConfirmLink/' component={ConfirmLink} />
+               <Route path='/CustomerHome/' component={CustomerHome} />
+               <Route path='/CustomerBarDetail/:barID' component={CustomerBarDetail} />
+               <Route path='/profile/:cusID' component={Edit} />
+               <Route path='/checkstatus/' component={StatusCheck} />
+               <Route path='/test2/' component={FavBar} />
+               <Route path='/change_password/:token' component={NewPassword} />
+               <Route path='/CustomerReserveii' component={CustomerReserveii} />
+               <Route path='/BarHome' component={BarHomepage} />
+               <Route path='/bardetails' component={BarProfile} />
+               <Route path='/reservations' component={ReservationList} /> 
+               <Route path='/customerviews' component={ShowBarDetail} />
+               <Route path='/logout' component={Logout} />
+            </Switch>
+         </Router>
       </div>
-    );
-  }
+   );
 }
-
 export default App;
-*/
-

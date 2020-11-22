@@ -6,7 +6,8 @@ import './CustomerHome.css'
 
 function FavoriteBar() {
     const [images,setImages] = useState<any[]>([]);
-    
+    const token:any = localStorage.getItem("user");
+    const accessToken:any = JSON.parse(token);
     
     const Tomap = () => {
                 return (                    
@@ -24,9 +25,9 @@ function FavoriteBar() {
     };
 
     useEffect(() => {
-        axios.get(`http://35.240.130.253:3001/customers/${window.cusID}/favbars`, {
+        axios.get(`http://35.240.130.253:3001/customers/${accessToken.id}/favbars`, {
                 headers: {
-                    'Authorization': `${window.Auth}`,
+                    'Authorization': `${accessToken.Authorization}`,
                     'Access-Control-Allow-Origin': '*'
                 }
             }).then((response) => {

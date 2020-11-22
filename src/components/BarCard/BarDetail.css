@@ -3,6 +3,11 @@ section{
     height: 270px;
 }
 
+.Landing{
+    background-image: url("./../../Pics/backgroundHomePage.jpg");
+    height: 100%;
+  }
+
 .nametext{
     height:80px;
     font-family: Impact;

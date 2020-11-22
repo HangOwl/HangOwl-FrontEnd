@@ -54,7 +54,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import * as Yup from 'yup'
 import axios from 'axios';
 import './EditProfile.css'
-import './StatusCard.css';
 
 
 function StatusCancel({ResId} : {ResId:any}){
@@ -62,11 +61,13 @@ function StatusCancel({ResId} : {ResId:any}){
   const toggle = () => setModal(!modal);
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
   let history = useHistory();
+  const token:any = localStorage.getItem("user");
+  const accessToken:any = JSON.parse(token);
 
   const handleClick = () => {
     axios.delete(`http://35.240.130.253:3001/reservations/${ResId}`,{
       headers: {
-        'Authorization' : `${window.Auth}`,
+        'Authorization' : `${accessToken.Authorization}`,
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
@@ -79,7 +80,7 @@ function StatusCancel({ResId} : {ResId:any}){
   return(
     <div>
     <Button className='stbut2' onClick={toggle}>
-        <p className='submittext'>Cancel Reserved</p>
+        <p className='submittext'>CanCel Reserved</p>
     </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle} className='editbg' aria-labelledby="contained-modal-title-vcenter" centered>
         <br/><br/>

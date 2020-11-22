@@ -2,14 +2,9 @@
   background-color: #000000;
 }
   
-body{
+.Landing{
   background-image: url("../Pics/backgroundHomePage.jpg");
-  height: 100vh;
-  min-height: 500px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  height: 100%;
 }
 
 .welcome{
@@ -26,7 +21,7 @@ body{
   font-family: Impact;
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
   color: #ffffff;
 }
