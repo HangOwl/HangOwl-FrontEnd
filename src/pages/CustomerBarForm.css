@@ -1,0 +1,14 @@
+.DatePicker{
+    border-radius: '100px';
+    width: 300px
+}
+
+.DatePicker__input{
+    border-radius: 4px;
+    width: 165px;
+    height: 35px;
+    font-family: Impact;
+    font-size: 14px;
+    text-align: left;
+}
+

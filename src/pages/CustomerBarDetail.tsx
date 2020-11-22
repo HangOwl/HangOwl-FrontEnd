@@ -17,6 +17,26 @@ function CustomerBarDetail({match} : {match:any}) {
     const [value,setValue] = useState<any>('');
     const token:any = localStorage.getItem("user");
     const accessToken:any = JSON.parse(token);
+    const [closeday, setCloseday] = useState<any>([]);
+    const [favbar, setFavbar] = useState<any>([]);
+
+    var Week = [
+        {id: '0', name: 'Sunday'},
+        {id: '1', name: 'Monday'},
+        {id: '2', name: 'Tuesday'},
+        {id: '3', name: 'Wednesday'},
+        {id: '4', name: 'Thursday'},
+        {id: '5', name: 'Friday'},
+        {id: '6', name: 'Saturday'},
+      ];
+
+    const MapDay = () => {
+        for(var i = 0; i < closeday.length; i++) {
+            if(closeday[i] == true) {
+                return (Week[i].name);
+            }
+        }        
+    };
 
 
 
@@ -25,6 +45,21 @@ function CustomerBarDetail({match} : {match:any}) {
             "barId": `${barID}`,
         }
     );
+
+    useEffect(() => {
+        axios.get(`http://35.240.130.253:3001/customers/${accessToken.id}/favbars`, {
+                headers: {
+                    'Authorization': `${accessToken.Authorization}`,
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }).then((response) => {
+                setFavbar(response.data);
+                console.log(response.data);
+            });            
+
+    // }
+    }, []);
+
     const favCLick = () => {
         axios.post(`http://35.240.130.253:3001/customers/${accessToken.id}/favbars`, params,{
             headers: {
@@ -66,6 +101,8 @@ function CustomerBarDetail({match} : {match:any}) {
                 }).then((response) => {
                     // console.log(response.data);
                     setImages(response.data);
+                    setCloseday(response.data.CloseWeekDay);
+
                 });      
     },[])
     return (
@@ -94,10 +131,11 @@ function CustomerBarDetail({match} : {match:any}) {
                 <p className='destext'>
                     Bar's Description: {images.BarDescription}<br/><br/>
                     Open-Time/Close-Time: {images.OpenTime}/{images.CloseTime}<br/><br/>
-                    Close On: {images.CloseWeekDay}<br/><br/>
-                    
+                    Close On: {MapDay()}<br/><br/>
+
                     LINE ID: {images.LineID}<br/>
                     {/* Tel: 012-345-6789<br/><br/> */}
+                    OpenTime: {images.OpenTime}<br /><br />
                     Address: {images.Address}<br/><br/>
                     Bar's Rule: {images.BarRule}<br/><br />
                     {/* Bar's Rule: If you want larger table, please tell us<br/> one day before your reserved date<br/><br/> */}
@@ -107,6 +145,8 @@ function CustomerBarDetail({match} : {match:any}) {
                 </div>
                 <br/><br/><br/>
             </div>
+            {MapDay()}
+
         </div>
     );
 }

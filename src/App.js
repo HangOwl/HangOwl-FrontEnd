@@ -21,6 +21,8 @@ import BarHomepage from './component/BarHomepage'
 import Customerviews from './component/Customerviews'
 import ReservationList from './component/BarReservation/reservationLists'
 import Logout from './components/Login/Logout'
+import ErrorReserve from './pages/ErrorReserve';
+
 
 function App() {
 
@@ -34,6 +36,7 @@ function App() {
                <Route path='/searchresult/' component={BarCardMatch} />
                <Route path='/BarDetail/:barID' component={BarDetail} />
                <Route path='/Reserveii/' component={Reserveii} />
+               <Route path='/cannotreserve/:barID' component={ErrorReserve}/>
                <Route path='/Forgotpw/' component={Forgotpw} />
                <Route path='/ConfirmLink/' component={ConfirmLink} />
                <Route path='/CustomerHome/' component={CustomerHome} />

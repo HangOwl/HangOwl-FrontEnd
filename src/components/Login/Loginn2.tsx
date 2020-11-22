@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Signupcus.css';
 import './Loginn.css'
 import * as Yup from 'yup'
-import Home from  '../../pages/Home';
 
 
 const RegisterSchema = Yup.object().shape({
@@ -28,7 +27,8 @@ interface Value2{
 function Loginn2({barID}: {barID:any}){
   var Auth = window.Auth;
   const [modal, setModal] = useState(true);
-  const toggle = () => setModal(!modal);
+  // const toggle = () => setModal(!modal);
+  const toggle = () => {setModal(!modal); history.push(`/Bardetail/${barID}`)};
   const toggle2 = () => setModal(false);
   const closeBtn = <button className="close" onClick={() => {toggle(); handleClick();}} >&times;</button>;
   let history = useHistory();
@@ -37,19 +37,8 @@ function Loginn2({barID}: {barID:any}){
   const [password, setPassword] = useState('');
 
 
-  const setTime = () => {
-    setTimeout(() => {
-      setUsername('');
-    }, 500);
-
-  }
-
   const handleClick = () => {
     console.log('Role handleClick: ', window.Role);
-    
-    if(window.Role === 0){
-      history.push(`/CustomerBarDetail/${barID}`);
-    }
 
   }
 
@@ -73,42 +62,39 @@ function Loginn2({barID}: {barID:any}){
   })
   .then((response) => {
       console.log(response);
+      if(response.data.Authorization){
+          localStorage.setItem("user", JSON.stringify(response.data));
+      }
       Auth = response.data.Authorization;
       window.Auth = Auth;
       window.Role = response.data.Role;
       window.ID = response.data.id;
-
+      setUsername('');
+      setPassword('');
+      setModal(!modal);
       console.log('Role: ', window.Role);
       handleClick();
-    
-    axios.get(`http://35.240.130.253:3001/customers/${window.ID}`, {
-        headers: {
-            'Authorization': `${window.Auth}`
-        }
-    }).then((response) => {
-        console.log(response);
-        window.Name=response.data.Name;
-        window.Email = response.data.Email;
-    });
+
 
   }).catch(error => {
-      console.log(error);
+    console.log(error);
+    setModal(modal);
+    // setModal(true);
+    console.log(modal)  
   });      
 
-    // useEffect(() => {
-    //     axios.get(`http://35.240.130.253:3001/customers/${window.cusID}`, {
-    //             headers: {
-    //                 'Authorization': `${window.Auth}`
-    //             }
-    //         }).then((response) => {
-    //             console.log(response);
-    //             window.Name=response.data.Name;
-    //             window.Email = response.data.Email;
-    //         });
-    // }, [])
   
 
   };
+
+  useEffect(() => {
+    if(username != '' && password != ''){
+      handleChange();
+      setModal(!modal);
+    }else if(username == '' && password == ''){
+      setModal(true);
+    }
+  }, [username,password]);
 
   return(
     <div>
@@ -133,6 +119,8 @@ function Loginn2({barID}: {barID:any}){
                 history.push('/')
                 setSubmitting(false);
               }, 500);
+              setUsername(values.email);
+              setPassword(values.password);
             }}
             validationSchema={RegisterSchema}
           >
@@ -145,9 +133,9 @@ function Loginn2({barID}: {barID:any}){
                 <Field name="email" 
                         type="email" 
                         id="email" 
-                        value={username} 
-                        onChange={(e:any) => setUsername(e.target.value)}
-                        //className={`form-control ${touched.email ? errors.email ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={username} 
+                        // onChange={(e:any) => setUsername(e.target.value)}
+                        className={`form-control ${touched.email ? errors.email ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="xxxx@email.com"/>
                 <ErrorMessage component="div" name="email" className="invalid-feedback" />
               </FormGroup>
@@ -158,9 +146,9 @@ function Loginn2({barID}: {barID:any}){
                 <Field name="password" 
                         type="password" 
                         id="password" 
-                        value={password}
-                        onChange={(e:any) => setPassword(e.target.value)}
-                        //className={`form-control ${touched.password ? errors.password ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={password}
+                        // onChange={(e:any) => setPassword(e.target.value)}
+                        className={`form-control ${touched.password ? errors.password ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="password"/>
                 <ErrorMessage component="div" name="password" className="invalid-feedback" />
               </FormGroup>
@@ -171,7 +159,7 @@ function Loginn2({barID}: {barID:any}){
                 className='submitbut3'
                 type='submit'
                 value='submit'
-                onClick={() => {handleChange(); setModal(!modal);}}
+                onClick={() => {setModal(modal);}}
               >
                 <p className='submittext3'>Login</p>
               </Button>

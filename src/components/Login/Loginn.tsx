@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { FormGroup, Label, Col, Button, Modal, ModalHeader }  from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage , FormikHelpers } from 'formik'
@@ -28,7 +28,8 @@ interface Value2{
 function Loginn(){
   var Auth = window.Auth;
   const [modal, setModal] = useState(true);
-  const toggle = () => setModal(!modal);
+  // const toggle = () => setModal(!modal);
+  const toggle = () => {setModal(!modal); history.push('/')}
   const closeBtn = <button className="close" onClick={() => {toggle(); handleClick();}} >&times;</button>;
   let history = useHistory();
 
@@ -36,17 +37,14 @@ function Loginn(){
   const [password, setPassword] = useState('');
 
 
-  const setTime = () => {
-    setTimeout(() => {
-      setUsername('');
-    }, 500);
-
-  }
-
   const handleClick = () => {
     console.log('Role handleClick: ', window.Role);
     
-    history.push('/');
+    // if(window.Role == 0){
+    //   history.push(`/customerhome/${window.cusID}`);
+    // }else{
+    //   history.push('/');
+    // }
 
   }
 
@@ -73,15 +71,31 @@ function Loginn(){
       if(response.data.Authorization){
         localStorage.setItem("user", JSON.stringify(response.data));
       }
+      setUsername('');
+      setPassword('');
+      setModal(!modal);
+      // console.log('Role: ', window.Role);
       handleClick();
 
 
   }).catch(error => {
       console.log(error);
+      setModal(!modal);
+      {console.log(modal)}
+      setModal(true);
   });      
   
 
   };
+
+  useEffect(() => {
+    if(username != '' && password != ''){
+      handleChange();
+      setModal(!modal);
+    }else if(username == '' && password == ''){
+      setModal(true);
+    }
+  }, [username,password]);
 
   return(
     <div>
@@ -104,6 +118,8 @@ function Loginn(){
                 history.push('/')
                 setSubmitting(false);
               }, 500);
+              setUsername(values.email);
+              setPassword(values.password);
             }}
             validationSchema={RegisterSchema}
           >
@@ -116,9 +132,9 @@ function Loginn(){
                 <Field name="email" 
                         type="email" 
                         id="email" 
-                        value={username} 
-                        onChange={(e:any) => setUsername(e.target.value)}
-                        //className={`form-control ${touched.email ? errors.email ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={username} 
+                        // onChange={(e:any) => setUsername(e.target.value)}
+                        className={`form-control ${touched.email ? errors.email ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="xxxx@email.com"/>
                 <ErrorMessage component="div" name="email" className="invalid-feedback" />
               </FormGroup>
@@ -129,9 +145,9 @@ function Loginn(){
                 <Field name="password" 
                         type="password" 
                         id="password" 
-                        value={password}
-                        onChange={(e:any) => setPassword(e.target.value)}
-                        //className={`form-control ${touched.password ? errors.password ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={password}
+                        // onChange={(e:any) => setPassword(e.target.value)}
+                        className={`form-control ${touched.password ? errors.password ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="password"/>
                 <ErrorMessage component="div" name="password" className="invalid-feedback" />
               </FormGroup>
@@ -142,7 +158,7 @@ function Loginn(){
                 className='submitbut3'
                 type='submit'
                 value='submit'
-                onClick={() => {handleChange(); setModal(!modal);}}
+                onClick={() => {setModal(modal);}}
               >
                 <p className='submittext3'>Login</p>
               </Button>
