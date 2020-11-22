@@ -60,7 +60,7 @@ export default function BarDetail() {
   return (
     <div>
     <Navbar />
-    <div className="bgg">
+    <div className="bgg1">
       <div className="centext">
         <br/><br/>
         <p className="edittext">Please type your bar details.</p>
@@ -79,7 +79,7 @@ export default function BarDetail() {
         <img className="editpic" src={'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath} /> 
         &nbsp;&nbsp;&nbsp;&nbsp;
         <p className="edittext">
-          <UploadButtons profile={"true"} GetData = {GetData}/>
+          <UploadButtons profile={"true"} GetData = {GetData} value="Change your profile"/>
         </p>
         <br/><br/>
       </div>
@@ -88,7 +88,7 @@ export default function BarDetail() {
         <AddPics addpics={picList} />
         <br/>
         <p className="edittext">
-          <UploadButtons profile={"false"} GetData = {GetData}/>
+          <UploadButtons profile={"false"} GetData = {GetData} value="Upload more pictures"/>
         </p>
       </div>
 

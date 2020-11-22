@@ -18,7 +18,7 @@ import NewPassword from './pages/NewPassword';
 import StatusCheck from './pages/StatusCheck';
 import BarProfile from './component/BarEdit/BarDetail';
 import BarHomepage from './component/BarHomepage'
-import ShowBarDetail from './component/ShowBarDetail'
+import Customerviews from './component/Customerviews'
 import ReservationList from './component/BarReservation/reservationLists'
 import Logout from './components/Login/Logout'
 
@@ -46,7 +46,7 @@ function App() {
                <Route path='/BarHome' component={BarHomepage} />
                <Route path='/bardetails' component={BarProfile} />
                <Route path='/reservations' component={ReservationList} /> 
-               <Route path='/customerviews' component={ShowBarDetail} />
+               <Route path='/customerviews' component={Customerviews} />
                <Route path='/logout' component={Logout} />
             </Switch>
          </Router>
