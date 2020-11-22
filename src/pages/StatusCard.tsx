@@ -11,10 +11,9 @@ interface CardProps {
     DateReserve : any,
     BarName: any
     ResId: any;
-    GetData: any;
 }
 function Card0(props : CardProps){
-    // console.log("date ",props.DateReserve)
+    console.log("date ",props.DateReserve)
     return (
         <div className='centext'>
             <div className='statusbox'>
@@ -23,7 +22,7 @@ function Card0(props : CardProps){
                 <p className='sttext'>{props.BarName} | {props.NumberOfPeople} people | {props.DateReserve}</p>
                 <br/>
                 <div className='cenbutton'>
-                    <StatusEdit BarName={props.BarName} NumberOfPeople={props.NumberOfPeople} DateReserve={props.DateReserve} ResId={props.ResId} GetData={props.GetData}/>
+                    <StatusEdit BarName={props.BarName} NumberOfPeople={props.NumberOfPeople} DateReserve={props.DateReserve} ResId={props.ResId}/>
                     {/* <Button className='stbut1'>
                         <p className='submittext'><StatusEdit /></p>
                     </Button> */}
@@ -86,7 +85,7 @@ function Card3(props: CardProps) {
 const StatusCard= (props : CardProps) => {
     
     const whatcolor = props.Status;
-    // console.log(props.NumberOfPeople);
+    console.log(props.NumberOfPeople);
     // if(whatcolor == '0'){
     //     return <div>{Card0()}</div> 
     // }

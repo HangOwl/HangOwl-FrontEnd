@@ -5,6 +5,12 @@
     color: #FFFFFF;
 }
 
+.Landing{
+    background-image: url("./../../Pics/backgroundHomePage.jpg");
+    height: 100vh;
+  }
+  
+
 .left{
     margin: 10%;
 }
