@@ -61,8 +61,9 @@ import EditReserve from './EditReserve';
 interface CardProps {
   NumberOfPeople :  any ,
   DateReserve : any,
-  BarName: any
-  ResId: any;
+  BarName: any,
+  ResId: any,
+  GetData: any
 }
 
 function StatusCancel(props: CardProps){
@@ -81,10 +82,10 @@ function StatusCancel(props: CardProps){
                 <p className='edittext'>Bar's Name : {props.BarName}</p>
                 <br/>
                 <p className='edittext'>Date : {props.DateReserve}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className='edittext'>< EditReserve ResId={props.ResId} Name="DateReserve"/></p>
+                <p className='edittext'>< EditReserve ResId={props.ResId} Name="DateReserve" GetData={props.GetData} /></p>
                 <br/>
                 <p className='edittext'>People : {props.NumberOfPeople}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className='edittext'>< EditReserve ResId={props.ResId} Name="NumberOfPeople"/></p>
+                <p className='edittext'>< EditReserve ResId={props.ResId} Name="NumberOfPeople" GetData={props.GetData}/></p>
                 <br/>
             </div>
             <br/>

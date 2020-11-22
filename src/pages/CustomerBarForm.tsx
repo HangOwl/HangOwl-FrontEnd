@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Container, FormGroup, Label, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter }  from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage , FormikHelpers } from 'formik'
 import 'bootstrap/dist/css/bootstrap.css';
 import * as Yup from 'yup'
 import axios from 'axios';
+import DatePicker, { DayValue, DayRange, Day } from 'react-modern-calendar-datepicker'
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import './CustomerBarForm.css'
 
 
 // const RegisterSchema = Yup.object().shape({
@@ -171,7 +174,6 @@ import axios from 'axios';
 
 // export default BarForm;
 
-
 const RegisterSchema = Yup.object().shape({
   date: Yup.string()
     .required('Required'),
@@ -200,6 +202,11 @@ function BarForm({barID} : {barID:any}){
   const token:any = localStorage.getItem("user");
   const accessToken:any = JSON.parse(token);
   let history = useHistory();
+
+  const formatInputValue = () => {
+    if (!day) return '';
+      return `${day.year}`+'-'+`${day.month<10? `0${day.month}`:`${day.month}`}`+'-'+`${day.month<10? `0${day.day}`:`${day.day}`}`;
+  };
 
   const handleClick = () => {
     setCheckbox(!checkbox);
@@ -235,6 +242,14 @@ function BarForm({barID} : {barID:any}){
 
 
   
+  useEffect(() => {
+    console.log('date: ', datereserve);
+    if(datereserve != '' && numberofpeople != ''){
+      handleChange();
+    }
+  }, [datereserve,numberofpeople,postscript]);
+
+  
   const handleChange = () => {
     const params = JSON.stringify(
       {
@@ -253,14 +268,28 @@ function BarForm({barID} : {barID:any}){
       }
     }).then((response) => {
       console.log(response);
+      window.Reserveid = response.data.ResId;
+      console.log(window.Reserveid);
+      if(response.data == 'Bar not open due to Emergency.'){
+        window.location.replace(`/cannotreserve/${barID}`);
+
+      }else if(response.data == 'Bar not open due to CloseWeekDay.'){
+        // window.location.replace('/cannotreserve/');
+        window.location.replace(`/cannotreserve/${barID}`);
+      }else{
+        history.push('/CustomerReserveii');
+      }
+
       // window.Reserveid = response.data.ResId;
       // console.log(window.Reserveid);
-      history.push('/CustomerReserveii');
+      // history.push('/CustomerReserveii');
 
-      //istory.push('/Reserveii');
+      // history.push('/Reserveii');
 
     });
   }
+
+  const [day, setDay] = React.useState<DayValue>(null)
 
 
   return(
@@ -288,6 +317,9 @@ function BarForm({barID} : {barID:any}){
                 //history.push('/Reserveii')
                 setSubmitting(false);
               }, 500);
+              setDatereserve(values.date);
+              setNumberOfPeople(values.nopp);
+              setPostscript(values.ps);
             }}
             validationSchema={RegisterSchema}
           >
@@ -300,10 +332,16 @@ function BarForm({barID} : {barID:any}){
                 <Field name="date" 
                         type="text" 
                         id="date" 
-                        value={datereserve}
-                        onChange={(e:any) => setDatereserve(e.target.value)}
-                        //className={`form-control ${touched.date ? errors.date ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={datereserve}
+                        // onChange={(e:any) => setDatereserve(e.target.value)}
+                        className={`form-control ${touched.date ? errors.date ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="YYYY-MM-DD"/>
+                {/* <DatePicker value={day} 
+                  onChange={setDay}
+                  shouldHighlightWeekends
+                  inputPlaceholder="Select a date"
+                  formatInputText={formatInputValue}
+                /> */}
                 <ErrorMessage component="div" name="date" className="invalid-feedback" />
               </FormGroup>
             </Col>
@@ -313,9 +351,9 @@ function BarForm({barID} : {barID:any}){
                 <Field name="nopp" 
                         type="text" 
                         id="nopp" 
-                        value={numberofpeople}
-                        onChange = {(e:any) => setNumberOfPeople(e.target.value)}
-                        //className={`form-control ${touched.nopp ? errors.nopp ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={numberofpeople}
+                        // onChange = {(e:any) => setNumberOfPeople(e.target.value)}
+                        className={`form-control ${touched.nopp ? errors.nopp ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder=""/>
                 <ErrorMessage component="div" name="nopp" className="invalid-feedback" />
               </FormGroup>
@@ -326,9 +364,9 @@ function BarForm({barID} : {barID:any}){
                 <Field name="ps" 
                         type="text" 
                         id="ps" 
-                        value={postscript}
-                        onChange={(e:any) => setPostscript(e.target.value)}
-                        //className={`form-control ${touched.ps ? touched.ps ? 'is-invalid' : 'is-valid' : ''}`}
+                        // value={postscript}
+                        // onChange={(e:any) => setPostscript(e.target.value)}
+                        className={`form-control ${touched.ps ? touched.ps ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="Anything you want?"/>
               </FormGroup>
             </Col>
@@ -350,7 +388,7 @@ function BarForm({barID} : {barID:any}){
                 className='submitbut2'
                 type='submit'
                 value='submit'
-                onClick={() => {handleClick2();}}
+                // onClick={() => {handleClick2();}}
               >
                 <p className='submittext2'>Reserve Now</p>
               </Button>

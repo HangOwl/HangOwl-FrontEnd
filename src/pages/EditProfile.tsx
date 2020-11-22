@@ -24,10 +24,13 @@ function EditProfile(){
   const [value, setValue] = useState('');
   const [name, setName] = useState('');
   let history = useHistory();
+  const token:any = localStorage.getItem("user");
+  const accessToken:any = JSON.parse(token);
 
   const handleClick = () => {
     // history.push('/');
-    history.push(`/profile/${window.cusID}`)
+    //history.push(`/profile/${accessToken.id}`)
+    window.location.reload();
   }
   
   const handleChange = () => {
@@ -37,23 +40,21 @@ function EditProfile(){
       }
     );
 
-    // console.log(Auth);
-    // console.log(datereserve);
-    // console.log(numberofpeople);
-    // console.log('window', window.Auth);
-    axios.patch(`http://35.240.130.253:3001/customers/${window.cusID}`, params,{
+    axios.patch(`http://35.240.130.253:3001/customers/${accessToken.id}`, params,{
       headers: {
-        'Authorization' : `${window.Auth}`,
+        'Authorization' : `${accessToken.Authorization}`,
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
     }).then((response) => {
       console.log(response);
       window.Name = response.data.Name;
+      setValue('');
+      setName('');      
+      handleClick();
     });
     //console.log(Auth);
-    setValue('');
-    setName('');
+
   }
 
 
@@ -105,7 +106,7 @@ function EditProfile(){
                 className='submitbut2'
                 type='submit'
                 value='submit'
-                onClick={() => {handleChange(); handleClick(); setModal(!modal);}}
+                onClick={() => {handleChange(); setModal(!modal);}}
               >
                 <p className='submittext2'>Edit</p>
               </Button>

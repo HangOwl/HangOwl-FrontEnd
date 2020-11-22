@@ -6,6 +6,10 @@ import './CustomerHome.css'
 import '../components/BarCard/Reserveii.css';
 //import './BarForm.css'
 
+const handleClick = () =>{
+  window.location.replace(`/checkstatus`);
+}
+
 function CustomerReserveii() {
   return (
     // <NavLink to='/Reserveii'>
@@ -29,7 +33,7 @@ function CustomerReserveii() {
         </p>
         &nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <Button className='rsidbutton'>
+        <Button className='rsidbutton' onClick={handleClick}>
           <b className='rsidtext3'> Check Status </b>
         </Button>
       </div>

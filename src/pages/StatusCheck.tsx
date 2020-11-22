@@ -10,6 +10,18 @@ function StatusCheck() {
   const token:any = localStorage.getItem("user");
   const accessToken:any = JSON.parse(token);
 
+  const GetData = () => {
+    axios.get(`http://35.240.130.253:3001/reservations`, {
+      headers: {
+        'Authorization' : `${accessToken.Authorization}`,
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((response) => {
+      setImages(response.data)
+      //console.log(response.data['0'].Status)
+    });
+  }
+
   const Tomap = () => {
     return (                    
       <div>
@@ -24,7 +36,7 @@ function StatusCheck() {
               //     </div>
                   
               // </div>
-              <StatusCard Status={image.Status} NumberOfPeople={image.NumberOfPeople} DateReserve={image.DateReserve} BarName={image.BarName} ResId={image.ResId}/>
+              <StatusCard Status={image.Status} NumberOfPeople={image.NumberOfPeople} DateReserve={image.DateReserve} BarName={image.BarName} ResId={image.ResId} GetData={GetData}/>
           ))}
       </div>
     )

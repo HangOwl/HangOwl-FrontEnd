@@ -9,8 +9,9 @@ interface CardProps {
     Status : any ,
     NumberOfPeople :  any ,
     DateReserve : any,
-    BarName: any
-    ResId: any;
+    BarName: any,
+    ResId: any,
+    GetData: any
 }
 function Card0(props : CardProps){
     console.log("date ",props.DateReserve)
@@ -22,7 +23,7 @@ function Card0(props : CardProps){
                 <p className='sttext'>{props.BarName} | {props.NumberOfPeople} people | {props.DateReserve}</p>
                 <br/>
                 <div className='cenbutton'>
-                    <StatusEdit BarName={props.BarName} NumberOfPeople={props.NumberOfPeople} DateReserve={props.DateReserve} ResId={props.ResId}/>
+                    <StatusEdit BarName={props.BarName} NumberOfPeople={props.NumberOfPeople} DateReserve={props.DateReserve} ResId={props.ResId} GetData={props.GetData}/>
                     {/* <Button className='stbut1'>
                         <p className='submittext'><StatusEdit /></p>
                     </Button> */}
