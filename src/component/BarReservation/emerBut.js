@@ -112,7 +112,7 @@ export default function EmergencyButton(props){
         <OutlinedInput id="component-outlined" value={reason} onChange={(event) => {setReason(event.target.value);}} label="Reason" />
       </FormControl></p>
       <Button variant="contained" color="secondary" href="#contained-buttons" className={classes.button} onClick={() => {delData(); handleClose();}}>
-            Cencel all Reservation
+            Cancel all Reservation
           </Button>
           <Button variant="contained" color="primary" href="#contained-buttons" classname={classes.button} onClick={handleClose} style = {{backgroundColor :"purple"}}>
             Back to Reservation List
