@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import './BarDetail.css'
+import BarBG from '../img/BarBG(4K).jpg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       height: '420px',
       width: '200px',
-      // backgroundImage: `url(${BarBG})`,
+      backgroundImage: `url(${BarBG})`,
       backgroundColor: '#fff',
       border: '2px solid #000',
       padding: theme.spacing(2, 4, 3),
