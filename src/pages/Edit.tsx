@@ -12,30 +12,20 @@ import Axios from 'axios';
 
 function Edit() {
 
-    const [profile, setProfile] = useState({
-        Name: "",
-        Email: "",
-        Password: ""
-    });
-    const token:any = localStorage.getItem("user");
-    const accessToken:any = JSON.parse(token);
-
+    const [name, setName] = useState('');
 
     const handleChange = () => {
-        return<div>{`${profile.Name}`}</div>
+        return<div>{`${window.Name}`}</div>
     }
 
     useEffect(() => {
-        axios.get(`http://35.240.130.253:3001/customers/${accessToken.id}`, {
+        axios.get(`http://35.240.130.253:3001/customers/${window.cusID}`, {
                 headers: {
-                    'Authorization': accessToken.Authorization
+                    'Authorization': `${window.Auth}`
                 }
             }).then((response) => {
-                setProfile({
-                    Name: response.data.Name,
-                    Email: response.data.Email,
-                    Password: response.data.Password
-                })
+                console.log(response);
+                window.Name=response.data.Name;
             });
     }, [])
     return (
@@ -46,21 +36,21 @@ function Edit() {
                 <h1 className='edittoptext'>Your Profile</h1>
             </header>
             <div className='centext'>
-                <p className='edittext'>Name : {profile.Name}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p className='edittext'>Name : {window.Name}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p className='edittext'>&nbsp;< EditProfile /></p>
                 <br/>
-                <p className='edittext'>E-mail :{profile.Email}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p className='edittext'>E-mail :{window.Email}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p className='edittext'>&nbsp;< EditEmail /></p>
                 <br/>
                 <p className='edittext'>Password : **********</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p className='edittext'>&nbsp;< EditPassword /></p>
                 <br/>
             </div>
-            <br/>
+            <br/><br/>
             <div className='cenbutton'>
                 <NavLink to='/'>
-                    <Button className='submitbut2'>
-                        <p className='submittext3'>Save Edit</p>
+                    <Button className='submitbut55'>
+                        <p className='submittext3'>Back to<br />Your Profile</p>
                     </Button>
                 </NavLink>
             </div>  
