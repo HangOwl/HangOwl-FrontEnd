@@ -69,7 +69,7 @@ const useStyles = makeStyles({
       }, []);
   
     return (
-    <body className = "body">
+    <div className="Bar">
     <Navbar />
 
     <div>
@@ -116,7 +116,7 @@ const useStyles = makeStyles({
         </button>
       </Link>
       </center></div>
+      </div>
 
-    </body>
     );
   }

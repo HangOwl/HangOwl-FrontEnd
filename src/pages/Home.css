@@ -1,0 +1,27 @@
+.s1{
+  background-color: #000000;
+}
+  
+.Landing{
+  background-image: url("../Pics/backgroundHomePage.jpg");
+  height: 100%;
+}
+
+.welcome{
+  display: flex;
+  max-width: 85%;
+  object-fit: cover;
+  overflow: hidden;
+  margin: 0px;
+  border-radius: 0px;
+  padding: 0;
+}
+
+.rectext{
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+}

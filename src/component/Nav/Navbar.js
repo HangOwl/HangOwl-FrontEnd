@@ -53,7 +53,7 @@ function Navbar() {
             <FaIcons.FaBars onClick={() => {showSidebar(); handleChange2();}} />
           </Link>
           
-          <Link to='/'><img className="logo_photo" src={logo} /></Link>
+          <Link to='/BarHome'><img className="logo_photo" src={logo} /></Link>
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
