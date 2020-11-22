@@ -23,7 +23,8 @@ function EditEmail(){
   const [datereserve, setDatereserve] = useState('');
   const [numberofpeople, setNumberOfPeople]= useState('');
   const [postscript, setPostscript] = useState('');
-  let Auth = window.Auth;
+  const token:any = localStorage.getItem("user");
+  const accessToken:any = JSON.parse(token);
   
   const handleChange = () => {
     const params = JSON.stringify(
@@ -41,14 +42,14 @@ function EditEmail(){
     // console.log('window', window.Auth);
     axios.post("http://35.240.130.253:3001/reservations", params,{
       headers: {
-        'Authorization' : `${window.Auth}`,
+        'Authorization' : `${accessToken.Authorization}`,
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
     }).then((response) => {
       console.log(response);
-      window.Reserveid = response.data._id;
-      console.log(window.Reserveid);
+      // window.Reserveid = response.data._id;
+      // console.log(window.Reserveid);
     });
     //console.log(Auth);
     setDatereserve('');

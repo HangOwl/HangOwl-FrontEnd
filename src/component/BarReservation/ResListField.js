@@ -39,6 +39,8 @@ export default function List(props) {
   const statMap = ["Pending", "Accepted", "Rejected"]
   const [expanded, setExpanded] = React.useState(false);
 
+  const accessToken = JSON.parse(localStorage.getItem("user"));
+
   const PatchData = (id, value) => {
     console.log(value);
   }
@@ -50,11 +52,7 @@ export default function List(props) {
   const patchData = (id,stat) => {
     fetch('http://35.240.130.253:3001/reservations/' + id + '/' + stat, {
     method: 'PATCH', // or 'PUT'
-    headers:  {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1ODcwNzIxLCJleHAiOjE2MDYwNDM1MjF9.04hHLwo6FLPgQOEmqpPQL5LFF3Msj-Q2dHa7VJ_Y3ZY",
-      "id": "5f9e6fc429e35311c62d70ac",
-      "Role": 1
-    },
+    headers:  accessToken,
     })
 
     .then(response => response.json())

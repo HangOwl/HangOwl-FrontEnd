@@ -51,18 +51,15 @@ export default function UploadButtons(props) {
   const [open, setOpen] = useState(false)
   const Getdata = props.GetData;
 
+  const accessToken = JSON.parse(localStorage.getItem("user"));
+
   const modalOpen = () => { setOpen(true) };
  
   const modalClose = () => { setOpen(false) };
 
   async function PatchData(isProfile, pic) {
-    const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
-    "id": "5f9e6fc429e35311c62d70ac",
-    "Role": 1
-    }
     const config = {
-      'Authorization' : `${headers.Authorization}`,
+      'Authorization' : `${accessToken.Authorization}`,
       'Access-Control-Allow-Origin': '*',
     }
 
@@ -72,7 +69,7 @@ export default function UploadButtons(props) {
     data.append('image', pic);
 
        
-    const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id+'/pictures?profile='+isProfile, {
+    const res = await fetch(`http://35.240.130.253:3001/bars/`+accessToken.id+'/pictures?profile='+isProfile, {
         method: 'PATCH',
         headers: config,
         body: data,

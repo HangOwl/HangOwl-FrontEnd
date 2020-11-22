@@ -93,6 +93,8 @@ export default function ResList() {
   const [state, setState] = useState(-1)
   const [data, setData] = useState(info);
 
+  const accessToken = JSON.parse(localStorage.getItem("user"));
+
   const handleChangeData = (status) => {
     setState(status)
     if (status === -1) {
@@ -128,13 +130,8 @@ export default function ResList() {
 }
 
   async function fetchData() {
-    const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
-    "id": "5f9e6fc429e35311c62d70ac",
-    "Role": 1
-  }
 
-    const res = await fetch('http://35.240.130.253:3001/reservations', { headers })
+    const res = await fetch('http://35.240.130.253:3001/reservations', { headers: accessToken })
     
     
     res

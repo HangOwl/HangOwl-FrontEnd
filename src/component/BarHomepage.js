@@ -41,15 +41,13 @@ const useStyles = makeStyles({
     const classes = useStyles();
     const [ info, setInfo ] = useState([]);
     const [ bar, setName ] =  useState("");
-    const [ errors, setErrors ] = useState(false)
+    const [ errors, setErrors ] = useState(false);
+    const token = localStorage.getItem("user");
+    const accessToken = JSON.parse(token);
+
     async function fetchData() {
-        const headers = {
-          "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
-          "id": "5f9e6fc429e35311c62d70ac",
-          "Role": 1
-      }
     
-        const res = await fetch('http://35.240.130.253:3001/reservations', { headers })
+        const res = await fetch('http://35.240.130.253:3001/reservations', { headers: accessToken })
         
         
         res

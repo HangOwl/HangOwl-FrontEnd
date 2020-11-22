@@ -65,17 +65,13 @@ function EditContent(props) {
     const [contentKey, setcontentKey] = useState(props.contentKey);
     const [contentValue, setcontentValue] = useState('');
     const Getdata = props.GetData;
+    const accessToken = JSON.parse(localStorage.getItem("user"));
 
     const handleOpen = () => { setOpen(true) };
  
     const handleClose = () => { setOpen(false) };
 
     async function PatchData(contentKey, contentValue) {
-      const headers = {
-        "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
-    "id": "5f9e6fc429e35311c62d70ac",
-    "Role": 1
-      }
   
       const params = JSON.stringify(
         {
@@ -84,13 +80,13 @@ function EditContent(props) {
       );
   
       const config = {
-        'Authorization' : `${headers.Authorization}`,
+        'Authorization' : `${accessToken.Authorization}`,
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
   
          
-        const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id,{
+        const res = await fetch(`http://35.240.130.253:3001/bars/`+accessToken.id,{
           method: 'PATCH',
           headers: config,
           body: params,

@@ -69,14 +69,10 @@ function Loginn(){
       }
   })
   .then((response) => {
-      console.log(response);
-      Auth = response.data.Authorization;
-      window.Auth = Auth;
-      window.Role = response.data.Role;
-      window.ID = response.data.id;
-      window.cusID = response.data.id;
-
-      console.log('Role: ', window.Role);
+      console.log(response.data.Authorization);
+      if(response.data.Authorization){
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
       handleClick();
 
 

@@ -9,11 +9,14 @@ import { HomeWork } from '@material-ui/icons';
 
 function Home() {
   let history = useHistory();
-    if(window.Role != null){
-      if(window.Role == 0){
-        history.push(`/customerhome/${window.cusID}`);
+  const token = localStorage.getItem("user");
+  const accessToken = JSON.parse(token);
+    if(accessToken){
+      
+      if(accessToken.Role == 0){
+        history.push(`/customerhome/${accessToken.id}`);
       }
-      else if(window.Role == 1){
+      else if(accessToken.Role == 1){
         history.push(`/BarHome`);
       }
     }

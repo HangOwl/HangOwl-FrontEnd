@@ -197,7 +197,8 @@ function BarForm({barID} : {barID:any}){
   const [numberofpeople, setNumberOfPeople]= useState('');
   const [postscript, setPostscript] = useState('');
   const [checkbox, setCheckbox] = useState(false);
-  let Auth = window.Auth;
+  const token:any = localStorage.getItem("user");
+  const accessToken:any = JSON.parse(token);
   let history = useHistory();
 
   const handleClick = () => {
@@ -243,17 +244,17 @@ function BarForm({barID} : {barID:any}){
           Postscript: postscript
       }
     );
-
+    
     axios.post("http://35.240.130.253:3001/reservations", params,{
       headers: {
-        'Authorization' : `${window.Auth}`,
+        'Authorization' : accessToken.Authorization,
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
     }).then((response) => {
       console.log(response);
-      window.Reserveid = response.data.ResId;
-      console.log(window.Reserveid);
+      // window.Reserveid = response.data.ResId;
+      // console.log(window.Reserveid);
       history.push('/CustomerReserveii');
 
       //istory.push('/Reserveii');

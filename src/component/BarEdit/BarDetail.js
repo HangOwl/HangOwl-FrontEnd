@@ -26,14 +26,11 @@ export default function BarDetail() {
     Saturday: false
   });
 
-  async function GetData () { 
-    const headers = {
-      "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjllNmZjNDI5ZTM1MzExYzYyZDcwYWMiLCJSb2xlIjoxLCJFbWFpbFZlcmlmeSI6dHJ1ZSwiaWF0IjoxNjA1OTQwODg2LCJleHAiOjE2MDYxMTM2ODZ9.WY9LbucQdGIYA2oDq4MLtcSKxGDCuvNQWuEtjV8m9K8",
-    "id": "5f9e6fc429e35311c62d70ac",
-    "Role": 1
-    }
+  const accessToken = JSON.parse(localStorage.getItem("user"));
 
-    const res = await fetch(`http://35.240.130.253:3001/bars/`+headers.id+`/profile`, { headers });
+  async function GetData () { 
+
+    const res = await fetch(`http://35.240.130.253:3001/bars/`+accessToken.id+`/profile`, { headers: accessToken });
 
     res
     .json()
