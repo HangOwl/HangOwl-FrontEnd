@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
       },
     paper: {
       position: 'absolute',
-      height: '420px',
-      width: '200px',
+      height: '500px',
+      width: '280px',
       backgroundImage: `url(${BarBG})`,
       backgroundColor: '#fff',
       border: '2px solid #000',

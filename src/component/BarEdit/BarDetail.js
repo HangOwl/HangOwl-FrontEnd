@@ -9,7 +9,7 @@ import CheckBoxes from './CheckBoxes'
 import EditContent from './EditContent'
 import UploadButtons from './UploadButtons';
 import EditCheckBox from './EditCheckBox';
-
+import TimePicker from './TimePicker';
 
 export default function BarDetail() {
   const [ data, setData ] = useState([]);
@@ -65,6 +65,7 @@ export default function BarDetail() {
     <Navbar />
     <div className="bgg">
       <div className="centext">
+        <br/><br/>
         <p className="edittext">Please type your bar details.</p>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <p className="edittext">
@@ -88,6 +89,7 @@ export default function BarDetail() {
 
       <div className="centext">
         <AddPics addpics={picList} />
+        <br/>
         <p className="edittext">
           <UploadButtons profile={"false"} GetData = {GetData}/>
         </p>
@@ -104,14 +106,14 @@ export default function BarDetail() {
         <p className="edittext">Open Time : {data.OpenTime}</p>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <p className="edittext">
-          <EditContent contentKey="OpenTime" GetData = {GetData}/>
+          <TimePicker contentKey="OpenTime" GetData = {GetData}/>
         </p>
         <br/>
 
         <p className="edittext">Close Time : {data.CloseTime}</p>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <p className="edittext">
-          <EditContent contentKey="CloseTime" GetData = {GetData}/>
+          <TimePicker contentKey="CloseTime" GetData = {GetData}/>
         </p>
         <br/>
 
