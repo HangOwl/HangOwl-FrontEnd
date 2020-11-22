@@ -18,6 +18,7 @@
 .checkBut{
     height: 70px;
     width: 150px;
+
     border-radius: 0px;
     background-image: url("./img/Button1.png");
     background-position: center;

@@ -67,13 +67,15 @@ const useStyles = makeStyles((theme) => ({
     display : 'flex',
   },
   emerTabs: {
+    height: '100px',
+    width: '140px',
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '25%',
     flexShrink: 0,
     marginRight : "10px"
   },
   tab:{
-    background : "#b30059",
+    background : "#FF00C8",
   },
 
   label:{
@@ -219,6 +221,7 @@ export default function ResList() {
   return (
     <body className = "BG">
     <Navbar />
+    <br/>
     <div className={classes.root}>
     <center className="nametext"><h1>List Of Reservations</h1><br/></center>
       <AppBar position="static" color="default" className = {classes.tab}>

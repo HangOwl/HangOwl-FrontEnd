@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     gridList: {
       flexWrap: 'nowrap',
       transform: 'translateZ(0)',
+      backgroundColor: 'transparent'
     },
     title: {
       color: theme.palette.primary.light,
@@ -39,7 +40,7 @@ function AddPics(props) {
 
     return (
       <div className={classes.root} >
-      <GridList className={classes.gridList} cols={1.5}>
+      <GridList className={classes.gridList} cols={2.2}>
         {pics_path.map((path, index) => (
           <GridListTile key={index} keys={path}>
             <img  src={"http://35.240.130.253:3001/pictures/"+path} style={{height: "100%"}} /> 

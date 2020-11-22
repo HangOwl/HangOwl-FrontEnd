@@ -1,3 +1,7 @@
+.bgg1 {
+    background-image: url("../img/BarBG(4K).jpg");
+}
+
 .Customer-view {
     display: flex;
     align-items: center;
@@ -47,8 +51,8 @@
 }
 
 .Button3 {
-    height: 50px;
-    width: 70px;
+    height: 48px;
+    width: 68px;
     border-radius: 0px;
     background-image: url("../img/Button1.png");
     background-position: center;

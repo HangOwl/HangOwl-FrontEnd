@@ -111,7 +111,7 @@ export default function TimePickers(props) {
                         id="time"
                         label={contentKey}
                         type="time"
-                        defaultValue="00:00"
+                        defaultValue={contentValue}
                         className={classes.textField}
                         InputLabelProps={{
                         shrink: true,
@@ -123,6 +123,7 @@ export default function TimePickers(props) {
                         onChange={(event) => setcontentValue(event.target.value)}
                     />
                 </form>
+                console.log({contentValue});
                 <br/>
                 <button 
                     className={classes.Submit} 
