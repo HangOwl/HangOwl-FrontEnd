@@ -21,6 +21,7 @@ import BarHomepage from './component/BarHomepage'
 import ShowBarDetail from './component/ShowBarDetail'
 import ReservationList from './component/BarReservation/reservationLists'
 import Logout from './components/Login/Logout'
+import ErrorReserve from './pages/ErrorReserve';
 
 function App() {
 
@@ -48,6 +49,8 @@ function App() {
                <Route path='/reservations' component={ReservationList} /> 
                <Route path='/customerviews' component={ShowBarDetail} />
                <Route path='/logout' component={Logout} />
+               <Route path='/cannotreserve/:barID' component={ErrorReserve}/>
+
             </Switch>
          </Router>
       </div>
