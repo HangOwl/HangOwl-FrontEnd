@@ -10,6 +10,7 @@ import EditContent from './EditContent'
 import UploadButtons from './UploadButtons';
 import EditCheckBox from './EditCheckBox';
 import TimePicker from './TimePicker';
+import defaultImage from '../../Pics/default.jpg'
 
 export default function BarDetail() {
   const [ data, setData ] = useState([]);
@@ -76,7 +77,7 @@ export default function BarDetail() {
       </div>
 
       <div className="centext">
-        <img className="editpic" src={'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath} /> 
+        <img className="editpic" src={data.ProfilePicPath? 'http://35.240.130.253:3001/pictures/'+data.ProfilePicPath:defaultImage} /> 
         &nbsp;&nbsp;&nbsp;&nbsp;
         <p className="edittext">
           <UploadButtons profile={"true"} GetData = {GetData} value="Change your profile"/>

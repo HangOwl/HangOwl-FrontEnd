@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CustomerBarPic.css';
 import defaultimage from '../Pics/default.jpg';
-import { LocalShipping } from '@material-ui/icons';
 
 
 const CustomerBarPic = ({barID}: {barID:any}) => {
