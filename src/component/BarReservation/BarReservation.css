@@ -23,8 +23,8 @@
 }
 
 .emerBut{
-    float : left; 
-    height: 63px;
+    float : left;
+    height: 70px;
     width: 150px;
     border-radius: 0px;
     background-image: url("../img/Button1.png");
@@ -38,7 +38,20 @@
 
 .filterBut{
     float : right;
-    
+    height: 68px;
+    width: 150px;
+    background-image: url("../img/Button2.png");
+    background-position: center;
+    color: #ffffff;
+    font-size: 22px;
+    font-family: Impact;
+}
+
+.filter{
+    float : right;
+    width : 200px;
+    color : #ffffff;
+    font-family: Impact;
 }
 
 .BG{
