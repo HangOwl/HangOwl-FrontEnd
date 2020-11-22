@@ -1,10 +1,16 @@
 .s1{
   background-color: #000000;
 }
-  
+
 .Landing{
   background-image: url("../Pics/backgroundHomePage.jpg");
-  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 500px;  
+  height: 100vh;
+  display: inline-table;
 }
 
 .welcome{

@@ -145,7 +145,6 @@ function CustomerBarDetail({match} : {match:any}) {
                 </div>
                 <br/><br/><br/>
             </div>
-            {MapDay()}
 
         </div>
     );
