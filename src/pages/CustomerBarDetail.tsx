@@ -37,18 +37,18 @@ function CustomerBarDetail({match} : {match:any}) {
         }        
     };
 
-    const CheckFav = () => {
-        {console.log('image',images._id)}
+    // const CheckFav = () => {
+    //     {console.log('image',images._id)}
 
-        favbar.map((bars:any) => {
-            // console.log('bars', bars._id);
+    //     favbar.map((bars:any) => {
+    //         // console.log('bars', bars._id);
 
-            if(bars._id == images._id){
-                console.log('bars', bars);
-                // setValue(1);
-            }
-        })
-    }
+    //         if(bars._id == images._id){
+    //             console.log('bars', bars);
+    //             // setValue(1);
+    //         }
+    //     })
+    // }
 
     useEffect(() => {
         axios.get(`http://35.240.130.253:3001/customers/${window.cusID}/favbars`, {
@@ -121,7 +121,7 @@ function CustomerBarDetail({match} : {match:any}) {
     return (
         <div>
             <Navbar2 />
-            {CheckFav()}
+            {/* {CheckFav()} */}
             <div className="bgg">
                 <br/><br/>
                 <header>
