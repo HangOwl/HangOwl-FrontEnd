@@ -11,10 +11,10 @@ import FavBar from './FavBar';
 
 
 function CustomerBarDetail({match} : {match:any}) {
-    
+    var default_value = 0;
     const barID = match.params.barID;
     const [images,setImages] = useState<any>('');
-    const [value,setValue] = useState<any>('');
+    const [value,setValue] = useState<any>(0);
     const token:any = localStorage.getItem("user");
     const accessToken:any = JSON.parse(token);
     const [closeday, setCloseday] = useState<any>([]);
@@ -31,14 +31,29 @@ function CustomerBarDetail({match} : {match:any}) {
       ];
 
     const MapDay = () => {
+        var Day = '';
         for(var i = 0; i < closeday.length; i++) {
-            if(closeday[i] == true) {
-                return (Week[i].name);
+            if(closeday[i] ===true) {
+                // console.log(Week[i].name);
+                Day = Day + Week[i].name + ' ';
             }
-        }        
+            
+        }   
+        return <> {Day} </>     
     };
 
+   const CheckFav = () => {
+        {console.log('image',images._id)}
 
+        favbar.map((bars:any) => {
+            // {console.log('bar',bars._id)}
+            if(bars._id == images._id){
+                console.log('bars', bars._id);
+                default_value = 1;
+
+            }
+        })
+    }
 
     const params = (
         {
@@ -54,7 +69,7 @@ function CustomerBarDetail({match} : {match:any}) {
                 }
             }).then((response) => {
                 setFavbar(response.data);
-                console.log(response.data);
+                console.log('fav',response.data);
             });            
 
     // }
@@ -68,6 +83,7 @@ function CustomerBarDetail({match} : {match:any}) {
             }
         }).then((response) => {
             console.log(response.data);
+
         });          
     }
 
@@ -79,6 +95,7 @@ function CustomerBarDetail({match} : {match:any}) {
             }
         }).then((response) => {
             console.log(response.data);
+
         });          
     }
 
@@ -86,9 +103,12 @@ function CustomerBarDetail({match} : {match:any}) {
             if(value == 1){
                 favCLick();
             }
-            if(value === null){
+            if(value === 0){
                 favCLick2();
             }        
+            if(value === null){
+                favCLick2();
+            }
     }, [value]);
 
 
@@ -107,6 +127,7 @@ function CustomerBarDetail({match} : {match:any}) {
     },[])
     return (
         <div>
+            {CheckFav()}
             <Navbar2 />
             <div className="bgg">
                 {/*<ul>{bardetail && bardetail.map(item => <li key={item._id}> {item._id} </li>)} </ul>*/}
@@ -116,12 +137,11 @@ function CustomerBarDetail({match} : {match:any}) {
                     <Rating name="customized-1"
                             defaultValue={0} 
                             max={1}     
-                            value={value}
+                            value={default_value}
                             size="large"
                             onChange={(event, newValue) => {
                                 setValue(newValue);
                                 console.log('value ', value)
-                                // CheckValue();
                             }}
                     />
                     </h1>

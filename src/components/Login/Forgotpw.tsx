@@ -192,6 +192,8 @@ function Forgotpw(){
     })
     .then((response) => {
         console.log(response);
+        history.push('/ConfirmLink');
+
         // setUserID(response.data.id);
         // setAuth(response.data.access_token);
         // window.$Auth = auth;
@@ -199,14 +201,11 @@ function Forgotpw(){
     }).catch(error => {
         console.log(error);
     });
-    history.push('/ConfirmLink');
   }
 
   useEffect(()=> {
-    if(email != ''){
       handleSubmit();
-    }
-  }, [email]);
+  });
     
 
   return(

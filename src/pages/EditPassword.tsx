@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { FormGroup, Label, Col, Button, Modal, ModalHeader }  from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage , FormikHelpers } from 'formik'
@@ -7,6 +7,9 @@ import * as Yup from 'yup'
 import axios from 'axios';
 import './EditProfile.css'
 
+interface Props {
+  emaill: any
+}
 
 const RegisterSchema = Yup.object().shape({
   detail: Yup.string(),
@@ -16,45 +19,51 @@ interface Value2{
   detail: string,
 }
 
-function EditPassword(){
+function EditPassword(props: Props){
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
-  const [datereserve, setDatereserve] = useState('');
-  const [numberofpeople, setNumberOfPeople]= useState('');
-  const [postscript, setPostscript] = useState('');
+  const [email,setEmail] = useState(props.emaill);
+  console.log('email', email);
+
   let Auth = window.Auth;
   
-  const handleChange = () => {
-    const params = JSON.stringify(
-      {
-        barId: "5f8d33c8f736c01bd4619bfb",
-        DateReserve: datereserve,
-        NumberOfPeople: numberofpeople,
-        Postscript: postscript
-      }
-    );
 
-    // console.log(Auth);
-    // console.log(datereserve);
-    // console.log(numberofpeople);
-    // console.log('window', window.Auth);
-    axios.post("http://35.240.130.253:3001/reservations", params,{
-      headers: {
-        'Authorization' : `${window.Auth}`,
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      }
-    }).then((response) => {
-      console.log(response);
-      window.Reserveid = response.data._id;
-      console.log(window.Reserveid);
-    });
-    //console.log(Auth);
-    setDatereserve('');
-    setNumberOfPeople('');
-    setPostscript('');
-  }
+
+
+  // const handleChange = () => {
+  //   const params = JSON.stringify(
+  //     {
+  //       barId: "5f8d33c8f736c01bd4619bfb",
+  //       DateReserve: datereserve,
+  //       NumberOfPeople: numberofpeople,
+  //       Postscript: postscript
+  //     }
+  //   );
+  //   }
+      const param = JSON.stringify(
+          {
+              Email: email
+          }
+  
+      )   
+
+    useEffect(() => {
+      axios.post("http://35.240.130.253:3001/auth/change_password", param,{
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then((response) => {
+                console.log(response);
+            }).catch(error => {
+                console.log(error);
+            });      
+    })
+         
+      
+      // history.push('/ConfirmLink');
 
 
   return(

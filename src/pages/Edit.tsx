@@ -53,7 +53,7 @@ function Edit() {
                 <p className='edittext'>&nbsp;< EditEmail /></p>
                 <br/>
                 <p className='edittext'>Password : **********</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className='edittext'>&nbsp;< EditPassword /></p>
+                <p className='edittext'>&nbsp;<EditPassword emaill={profile.Email}/></p>
                 <br/>
             </div>
             <br/>

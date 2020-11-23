@@ -16,6 +16,7 @@ const CustomerHome = () => {
                 }
             }).then((response) => {
                 console.log(response);
+                window.cusID = accessToken.id;
                 window.Name=response.data.Name;
                 window.Email = response.data.Email;
             });

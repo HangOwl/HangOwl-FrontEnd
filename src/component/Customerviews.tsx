@@ -12,7 +12,30 @@ function Customerviews() {
     const [images,setImages] = useState<any>('');
     const [value,setValue] = useState<any>('');
     const token:any = localStorage.getItem("user");
+    const [closeday, setCloseday] = useState<any>([]);
     const accessToken:any = JSON.parse(token);
+
+    var Week = [
+        {id: '0', name: 'Sunday'},
+        {id: '1', name: 'Monday'},
+        {id: '2', name: 'Tuesday'},
+        {id: '3', name: 'Wednesday'},
+        {id: '4', name: 'Thursday'},
+        {id: '5', name: 'Friday'},
+        {id: '6', name: 'Saturday'},
+      ];
+
+    const MapDay = () => {
+        var Day = '';
+        for(var i = 0; i < closeday.length; i++) {
+            if(closeday[i] ===true) {
+                // console.log(Week[i].name);
+                Day = Day + Week[i].name + ' ';
+            }
+            
+        }   
+        return <> {Day} </>     
+    };
 
     
    useEffect(() => {
@@ -45,7 +68,7 @@ function Customerviews() {
                 <p className='destext'>
                     Bar's Description: {images.BarDescription}<br/><br/>
                     Open-Time/Close-Time: {images.OpenTime}/{images.CloseTime}<br/><br/>
-                    Close On: {images.CloseWeekDay}<br/><br/>
+                    Close On: {MapDay()}<br/><br/>
                     
                     LINE ID: {images.LineID}<br/>
                     Address: {images.Address}<br/><br/>

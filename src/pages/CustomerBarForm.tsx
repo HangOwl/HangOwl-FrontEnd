@@ -9,174 +9,7 @@ import DatePicker, { DayValue, DayRange, Day } from 'react-modern-calendar-datep
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import './CustomerBarForm.css'
 
-
-// const RegisterSchema = Yup.object().shape({
-//   date: Yup.string()
-//     .required('Required'),
-//   nopp: Yup.string()
-//     .required('Required'),
-//   ps: Yup.string(),
-//   acceptrule: Yup.bool().oneOf([true], "Please accept the Bar's Rule first!")
-// });
-
-// interface Value2{
-//   date: string,
-//   nopp: string,
-//   ps: string,
-//   acceptrule: false,
-// }
-
-// function BarForm({barID} : {barID:any}){
-//   const [modal, setModal] = useState(false);
-//   const toggle = () => setModal(!modal);
-//   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
-//   const [datereserve, setDatereserve] = useState('');
-//   const [numberofpeople, setNumberOfPeople]= useState('');
-//   const [postscript, setPostscript] = useState('');
-//   let Auth = window.Auth;
-//   let history = useHistory();
-
-//   const handleClick = () => {
-//     history.push('/CustomerReserveii');
-
-//   }
-  
-//   const handleChange = () => {
-//     const params = JSON.stringify(
-//       {
-//           barId: `${barID}`,
-//           DateReserve: datereserve,
-//           NumberOfPeople: numberofpeople,
-//           Postscript: postscript
-//       }
-//     );
-
-//     // console.log(Auth);
-//     // console.log(datereserve);
-//     // console.log(numberofpeople);
-//     // console.log('window', window.Auth);
-//     axios.post("http://35.240.130.253:3001/reservations", params,{
-//       headers: {
-//         'Authorization' : `${window.Auth}`,
-//         'Access-Control-Allow-Origin': '*',
-//         'Content-Type': 'application/json',
-//       }
-//     }).then((response) => {
-//       console.log(response);
-//       window.Reserveid = response.data._id;
-//       console.log(window.Reserveid);
-//       handleClick();
-//     });
-//     //console.log(Auth);
-//     setDatereserve('');
-//     setNumberOfPeople('');
-//     setPostscript('');
-//   }
-
-
-//   return(
-//     <div>
-//       <Button className='rsbutton3' onClick={toggle}>
-//         <p className='rstext3'> Reserve </p>
-//       </Button>
-//       <Modal isOpen={modal} fade={false} toggle={toggle} className='modalbg' aria-labelledby="contained-modal-title-vcenter" centered>
-//         <ModalHeader toggle={toggle} close={closeBtn}>
-//           <b className='formtext'>Reservation Form</b>
-//         </ModalHeader>
-//           <Formik
-//             initialValues={{
-//               date: '',
-//               nopp: '',
-//               ps: '',
-//               acceptrule: false,
-//             }}
-//             onSubmit={(
-//               values: Value2,
-//               { setSubmitting }: FormikHelpers<Value2>
-//             ) => {
-//               setTimeout(() => {
-//                 {/*alert(JSON.stringify(values, null, 2));*/}
-//                 //history.push('/Reserveii')
-//                 setSubmitting(false);
-//               }, 500);
-//             }}
-//             validationSchema={RegisterSchema}
-//           >
-//           {({ errors, touched }) => (
-//             <Form>
-//             <br/>
-//             <Col>
-//               <FormGroup className="form-inline">
-//                 <Label for="date">Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Label>
-//                 <Field name="date" 
-//                         type="text" 
-//                         id="date" 
-//                         value={datereserve}
-//                         onChange={(e:any) => setDatereserve(e.target.value)}
-//                         //className={`form-control ${touched.date ? errors.date ? 'is-invalid' : 'is-valid' : ''}`}
-//                         placeholder="YYYY-MM-DD"/>
-//                 <ErrorMessage component="div" name="date" className="invalid-feedback" />
-//               </FormGroup>
-//             </Col>
-//             <Col>
-//               <FormGroup className="form-inline" action="/action_page.php">
-//                 <Label for="nopp">No.People</Label>
-//                 <Field name="nopp" 
-//                         type="text" 
-//                         id="nopp" 
-//                         value={numberofpeople}
-//                         onChange = {(e:any) => setNumberOfPeople(e.target.value)}
-//                         //className={`form-control ${touched.nopp ? errors.nopp ? 'is-invalid' : 'is-valid' : ''}`}
-//                         placeholder=""/>
-//                 <ErrorMessage component="div" name="nopp" className="invalid-feedback" />
-//               </FormGroup>
-//             </Col>
-//             <Col>
-//               <FormGroup>
-//                 <Label for="ps" className='cbtext'>Ps.</Label>
-//                 <Field name="ps" 
-//                         type="text" 
-//                         id="ps" 
-//                         value={postscript}
-//                         onChange={(e:any) => setPostscript(e.target.value)}
-//                         className={`form-control ${touched.ps ? touched.ps ? 'is-invalid' : 'is-valid' : ''}`}
-//                         placeholder="Anything you want?"/>
-//               </FormGroup>
-//             </Col>
-//             <Col>
-//               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//               <Field type="checkbox" 
-//                       name="acceptrule"
-//                       id="acceptrule"
-//                       className={'form-check-input' + (errors.acceptrule && touched.acceptrule ? ' is-invalid' : '')} />
-//               <Label for="acceptrule" className="accepttext">&nbsp;&nbsp;&nbsp;Do you accept the Bar's Rules?</Label>
-//               <ErrorMessage name="acceptrule" component="div" className="invalid-feedback" />
-//             </Col>
-//             <br/>
-//             <div className='cenbutton'>
-//               <Button
-//                 className='submitbut2'
-//                 type='submit'
-//                 value='submit'
-//                 onClick={() => {handleChange(); setModal(!modal);}}
-//               >
-//                 <p className='submittext2'>Reserve Now</p>
-//               </Button>
-//             </div>     
-//             <br/>     
-//             </Form>
-//           )}  
-//           </Formik>
-//       </Modal>
-//     </div>
-//   )
-// };
-
-// export default BarForm;
-
 const RegisterSchema = Yup.object().shape({
-  date: Yup.string()
-    .required('Required'),
   nopp: Yup.string()
     .required('Required'),
   ps: Yup.string(),
@@ -184,7 +17,6 @@ const RegisterSchema = Yup.object().shape({
 });
 
 interface Value2{
-  date: string,
   nopp: string,
   ps: string,
   acceptrule: false,
@@ -193,6 +25,7 @@ interface Value2{
 function BarForm({barID} : {barID:any}){
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  var Date = '';
   const toggle2 = () => setModal(true);
   const closeBtn = <button className="close" onClick={() => {toggle(); clearvalue();}}>&times;</button>;
   const [datereserve, setDatereserve] = useState('');
@@ -205,16 +38,14 @@ function BarForm({barID} : {barID:any}){
 
   const formatInputValue = () => {
     if (!day) return '';
-      return `${day.year}`+'-'+`${day.month<10? `0${day.month}`:`${day.month}`}`+'-'+`${day.month<10? `0${day.day}`:`${day.day}`}`;
+    Date = `${day.year}`+'-'+`${day.month<10? `0${day.month}`:`${day.month}`}`+'-'+`${day.month<10? `0${day.day}`:`${day.day}`}`.toString();
+    setDatereserve(Date);
+    return datereserve;
   };
 
   const handleClick = () => {
     setCheckbox(!checkbox);
     console.log('check box: ', checkbox);
-    //history.push('/CustomerReserveii');
-
-    //handleChange();
-    // history.push('/Reserveii');
   }
 
   const handleClick2 = () => {
@@ -239,18 +70,10 @@ function BarForm({barID} : {barID:any}){
       setPostscript('');
       setCheckbox(false);
   }
-
-
-  
-  useEffect(() => {
-    console.log('date: ', datereserve);
-    if(datereserve != '' && numberofpeople != ''){
-      handleChange();
-    }
-  }, [datereserve,numberofpeople,postscript]);
-
   
   const handleChange = () => {
+    console.log('1', datereserve);
+    console.log('2', numberofpeople);
     const params = JSON.stringify(
       {
           barId: `${barID}`,
@@ -280,12 +103,6 @@ function BarForm({barID} : {barID:any}){
         history.push('/CustomerReserveii');
       }
 
-      // window.Reserveid = response.data.ResId;
-      // console.log(window.Reserveid);
-      // history.push('/CustomerReserveii');
-
-      // history.push('/Reserveii');
-
     });
   }
 
@@ -303,7 +120,7 @@ function BarForm({barID} : {barID:any}){
         </ModalHeader>
           <Formik
             initialValues={{
-              date: '',
+              // date: '',
               nopp: '',
               ps: '',
               acceptrule: false,
@@ -317,7 +134,7 @@ function BarForm({barID} : {barID:any}){
                 //history.push('/Reserveii')
                 setSubmitting(false);
               }, 500);
-              setDatereserve(values.date);
+              // setDatereserve(values.date);
               setNumberOfPeople(values.nopp);
               setPostscript(values.ps);
             }}
@@ -329,19 +146,19 @@ function BarForm({barID} : {barID:any}){
             <Col>
               <FormGroup className="form-inline">
                 <Label for="date">Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Label>
-                <Field name="date" 
+                {/* <Field name="date" 
                         type="text" 
                         id="date" 
                         // value={datereserve}
                         // onChange={(e:any) => setDatereserve(e.target.value)}
                         className={`form-control ${touched.date ? errors.date ? 'is-invalid' : 'is-valid' : ''}`}
-                        placeholder="YYYY-MM-DD"/>
-                {/* <DatePicker value={day} 
+                        placeholder="YYYY-MM-DD"/> */}
+                <DatePicker value={day} 
                   onChange={setDay}
                   shouldHighlightWeekends
                   inputPlaceholder="Select a date"
                   formatInputText={formatInputValue}
-                /> */}
+                />
                 <ErrorMessage component="div" name="date" className="invalid-feedback" />
               </FormGroup>
             </Col>
@@ -366,7 +183,7 @@ function BarForm({barID} : {barID:any}){
                         id="ps" 
                         // value={postscript}
                         // onChange={(e:any) => setPostscript(e.target.value)}
-                        className={`form-control ${touched.ps ? touched.ps ? 'is-invalid' : 'is-valid' : ''}`}
+                        // className={`form-control ${touched.ps ? touched.ps ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="Anything you want?"/>
               </FormGroup>
             </Col>
@@ -388,7 +205,7 @@ function BarForm({barID} : {barID:any}){
                 className='submitbut2'
                 type='submit'
                 value='submit'
-                // onClick={() => {handleClick2();}}
+                onClick={handleClick2}
               >
                 <p className='submittext2'>Reserve Now</p>
               </Button>

@@ -37,12 +37,23 @@ function NewPassword({match}: {match:any}){
   const [password, setPassword] = useState('');
   const [renewpassword, setRenewpassword] = useState('');
 
+
+
   let history = useHistory();
-  useEffect(() => {
+
+
+  const handleChange2 = () => {
     if(password != '' && renewpassword != ''){
       handleChange();
     }
-  }, [password,renewpassword]);
+  }
+
+  // useEffect(() => {
+  //   console.log('[',passwordd);
+  //   if(passwordd != '' && renewpassword != ''){
+  //     handleChange();
+  //   }
+  // }, [passwordd,renewpassword]);
 
   const handleClick = () => {
       history.push('/')
@@ -55,6 +66,7 @@ function NewPassword({match}: {match:any}){
   }
 
   const handleChange = () => {
+    console.log('password', password);
     axios.patch(`http://35.240.130.253:3001/auth/change_password`, params,{
       headers: {
           //'Authorization': `${window.Auth}`,
@@ -83,13 +95,13 @@ function NewPassword({match}: {match:any}){
               { setSubmitting }: FormikHelpers<Value2>
             ) => {
               setTimeout(() => {
-                {/*alert(JSON.stringify(values, null, 2));*/}
                 history.push('/')
                 setSubmitting(false);
-                setPassword(values.newpw);
-                setRenewpassword(values.renewpw);
               }, 500);
+              setPassword(values.newpw);
+              setRenewpassword(values.renewpw);
             }}
+
             validationSchema={RegisterSchema}
           >
           {({ errors, touched }) => (
@@ -101,6 +113,8 @@ function NewPassword({match}: {match:any}){
                 <Field name="newpw" 
                         type="password" 
                         id="newpw" 
+                        // value={password}
+                        // onChange = {(e:any) => setPassword(e.target.value)}
                         className={`form-control ${touched.newpw ? errors.newpw ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="new password"/>
                 <ErrorMessage component="div" name="password" className="invalid-feedback" />
@@ -127,7 +141,7 @@ function NewPassword({match}: {match:any}){
                 className='submitbut4'
                 type='submit'
                 value='submit'
-                // onClick={handleClick}
+                onClick={handleChange2}
               >
                 <p className='submittext4'>Change Password</p>
               </Button>
