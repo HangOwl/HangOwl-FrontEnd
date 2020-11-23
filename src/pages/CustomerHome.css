@@ -109,3 +109,11 @@
   text-align: left;
   color: #ffffff;
 }
+
+.MuiRating-icon{
+  font-size: 50px;
+}
+
+.MuiRating-iconEmpty{
+  font-size: 50px;
+}
