@@ -24,7 +24,7 @@ function EditPassword(props: Props){
   const toggle = () => setModal(!modal);
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
   const [email,setEmail] = useState(props.emaill);
-  console.log('email', email);
+  console.log('email', props.emaill);
 
   let Auth = window.Auth;
   
@@ -43,7 +43,7 @@ function EditPassword(props: Props){
   //   }
       const param = JSON.stringify(
           {
-              Email: email
+              Email: props.emaill
           }
   
       )   
@@ -60,7 +60,7 @@ function EditPassword(props: Props){
             }).catch(error => {
                 console.log(error);
             });      
-    })
+    },[closeBtn])
          
       
       // history.push('/ConfirmLink');

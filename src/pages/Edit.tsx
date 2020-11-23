@@ -48,9 +48,9 @@ function Edit() {
             <div className='centext'>
                 <p className='edittext'>Name : {profile.Name}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p className='edittext'>&nbsp;< EditProfile /></p>
-                <br/>
+                <br/><br />
                 <p className='edittext'>E-mail :{profile.Email}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className='edittext'>&nbsp;< EditEmail /></p>
+                {/* <p className='edittext'>&nbsp;< EditEmail /></p> */}
                 <br/>
                 <p className='edittext'>Password : **********</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p className='edittext'>&nbsp;<EditPassword emaill={profile.Email}/></p>

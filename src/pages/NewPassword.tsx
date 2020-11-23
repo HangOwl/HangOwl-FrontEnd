@@ -42,11 +42,11 @@ function NewPassword({match}: {match:any}){
   let history = useHistory();
 
 
-  const handleChange2 = () => {
-    if(password != '' && renewpassword != ''){
-      handleChange();
-    }
-  }
+  // const handleChange2 = () => {
+  //   if(password != '' && renewpassword != ''){
+  //     handleChange();
+  //   }
+  // }
 
   // useEffect(() => {
   //   console.log('[',passwordd);
@@ -113,9 +113,9 @@ function NewPassword({match}: {match:any}){
                 <Field name="newpw" 
                         type="password" 
                         id="newpw" 
-                        // value={password}
-                        // onChange = {(e:any) => setPassword(e.target.value)}
-                        className={`form-control ${touched.newpw ? errors.newpw ? 'is-invalid' : 'is-valid' : ''}`}
+                        value={password}
+                        onChange = {(e:any) => setPassword(e.target.value)}
+                        // className={`form-control ${touched.newpw ? errors.newpw ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="new password"/>
                 <ErrorMessage component="div" name="password" className="invalid-feedback" />
               </FormGroup>
@@ -126,7 +126,7 @@ function NewPassword({match}: {match:any}){
                 <Field name="renewpw" 
                         type="password" 
                         id="renewpw" 
-                        className={`form-control ${touched.renewpw ? errors.renewpw ? 'is-invalid' : 'is-valid' : ''}`}
+                        // className={`form-control ${touched.renewpw ? errors.renewpw ? 'is-invalid' : 'is-valid' : ''}`}
                         placeholder="confirm your password"/>
                 <ErrorMessage component="div" name="renewpw" className="invalid-feedback" />
               </FormGroup>
@@ -141,7 +141,7 @@ function NewPassword({match}: {match:any}){
                 className='submitbut4'
                 type='submit'
                 value='submit'
-                onClick={handleChange2}
+                onClick={handleChange}
               >
                 <p className='submittext4'>Change Password</p>
               </Button>
