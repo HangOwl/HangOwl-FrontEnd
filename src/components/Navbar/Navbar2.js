@@ -15,6 +15,8 @@ function Navbar() {
   const [sidestate, setSidestate] = useState(false);
   const [modalPath, setModalPath] = useState(null);
   const [changePage, setChangePage] = useState(false);
+  const token = localStorage.getItem("user");
+  const accessToken = JSON.parse(token);
   const [term, setTerm] = useState('');
   const ref = useRef();
 
@@ -61,7 +63,7 @@ function Navbar() {
             <FaIcons.FaBars onClick={() => {showSidebar(); handleChange2();}} />
           </Link>
           
-          <Link to='/customerhome'><img className="logo_photo" src={logo} /></Link>
+          <Link to={`/customerhome/${accessToken.id}` }><img className="logo_photo" src={logo} /></Link>
 
           {/* <div className="search_box ui right floated"> */}
             <Input size='big' className="search_bar" icon='search' placeholder='Search...' onChange={(e) => setTerm(e.target.value)}/>
