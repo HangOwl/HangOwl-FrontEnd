@@ -1,20 +1,19 @@
 {
   "files": {
-    "main.css": "/HangOwl-FrontEnd/static/css/main.0cc82c11.chunk.css",
-    "main.js": "/HangOwl-FrontEnd/static/js/main.2ac4d35e.chunk.js",
-    "main.js.map": "/HangOwl-FrontEnd/static/js/main.2ac4d35e.chunk.js.map",
+    "main.css": "/HangOwl-FrontEnd/static/css/main.919422e9.chunk.css",
+    "main.js": "/HangOwl-FrontEnd/static/js/main.e6009b2b.chunk.js",
+    "main.js.map": "/HangOwl-FrontEnd/static/js/main.e6009b2b.chunk.js.map",
     "runtime-main.js": "/HangOwl-FrontEnd/static/js/runtime-main.1b04230e.js",
     "runtime-main.js.map": "/HangOwl-FrontEnd/static/js/runtime-main.1b04230e.js.map",
-    "static/css/2.95f25948.chunk.css": "/HangOwl-FrontEnd/static/css/2.95f25948.chunk.css",
-    "static/js/2.3c554ccc.chunk.js": "/HangOwl-FrontEnd/static/js/2.3c554ccc.chunk.js",
-    "static/js/2.3c554ccc.chunk.js.map": "/HangOwl-FrontEnd/static/js/2.3c554ccc.chunk.js.map",
+    "static/css/2.7dcb9224.chunk.css": "/HangOwl-FrontEnd/static/css/2.7dcb9224.chunk.css",
+    "static/js/2.9bcf88f7.chunk.js": "/HangOwl-FrontEnd/static/js/2.9bcf88f7.chunk.js",
+    "static/js/2.9bcf88f7.chunk.js.map": "/HangOwl-FrontEnd/static/js/2.9bcf88f7.chunk.js.map",
     "index.html": "/HangOwl-FrontEnd/index.html",
-    "static/css/2.95f25948.chunk.css.map": "/HangOwl-FrontEnd/static/css/2.95f25948.chunk.css.map",
-    "static/css/main.0cc82c11.chunk.css.map": "/HangOwl-FrontEnd/static/css/main.0cc82c11.chunk.css.map",
-    "static/js/2.3c554ccc.chunk.js.LICENSE.txt": "/HangOwl-FrontEnd/static/js/2.3c554ccc.chunk.js.LICENSE.txt",
-    "static/media/BarReservation.css": "/HangOwl-FrontEnd/static/media/Button1.dd6c3c0c.png",
+    "static/css/2.7dcb9224.chunk.css.map": "/HangOwl-FrontEnd/static/css/2.7dcb9224.chunk.css.map",
+    "static/css/main.919422e9.chunk.css.map": "/HangOwl-FrontEnd/static/css/main.919422e9.chunk.css.map",
+    "static/js/2.9bcf88f7.chunk.js.LICENSE.txt": "/HangOwl-FrontEnd/static/js/2.9bcf88f7.chunk.js.LICENSE.txt",
+    "static/media/BarReservation.css": "/HangOwl-FrontEnd/static/media/Button2.9854d0eb.png",
     "static/media/Signupbar.css": "/HangOwl-FrontEnd/static/media/BarBG.2c64a60c.jpg",
-    "static/media/BarHomepage.css": "/HangOwl-FrontEnd/static/media/Button2.9854d0eb.png",
     "static/media/BarDetail.css": "/HangOwl-FrontEnd/static/media/Button3.6676a644.png",
     "static/media/Signupcus.css": "/HangOwl-FrontEnd/static/media/defaultCyan3.fc2e01b7.png",
     "static/media/StatusCheck.css": "/HangOwl-FrontEnd/static/media/CustomerBG.d510138b.jpg",
@@ -29,9 +28,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1b04230e.js",
-    "static/css/2.95f25948.chunk.css",
-    "static/js/2.3c554ccc.chunk.js",
-    "static/css/main.0cc82c11.chunk.css",
-    "static/js/main.2ac4d35e.chunk.js"
+    "static/css/2.7dcb9224.chunk.css",
+    "static/js/2.9bcf88f7.chunk.js",
+    "static/css/main.919422e9.chunk.css",
+    "static/js/main.e6009b2b.chunk.js"
   ]
 }
