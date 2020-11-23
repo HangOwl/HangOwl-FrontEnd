@@ -109,6 +109,7 @@ function CustomerBarDetail({match} : {match:any}) {
             if(value === null){
                 favCLick2();
             }
+            // window.location.reload();
     }, [value]);
 
 
@@ -141,12 +142,13 @@ function CustomerBarDetail({match} : {match:any}) {
                             size="large"
                             onChange={(event, newValue) => {
                                 setValue(newValue);
-                                console.log('value ', value)
+                                console.log('value ', value);
+                                if(value == newValue) {window.location.reload()};                
                             }}
                     />
                     </h1>
                 </header>
-                <br/>                    
+                <br/>    
                 <CustomerBarPic barID={barID}/>
                 <p className='destext'>
                     Bar's Description: {images.BarDescription}<br/><br/>
